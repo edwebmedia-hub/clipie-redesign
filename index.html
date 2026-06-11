@@ -1,0 +1,2211 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CliPie Power Drives — School Transport, Pet &amp; House Sitting</title>
+  <meta name="description" content="Safe school transport, loving pet sitting, and trusted house sitting — CliPie Power Drives looks after the people, pets, and places you care about most." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+/* ===========================
+   CliPie Power Drives — styles
+   =========================== */
+
+:root {
+  --navy: #1B2A4A;
+  --navy-light: #2C3E63;
+  --coral: #FF6B4A;
+  --coral-dark: #E8553A;
+  --amber: #FFC857;
+  --mint: #2EC4B6;
+  --cream: #FAF7F2;
+  --white: #FFFFFF;
+  --ink: #1F2937;
+  --ink-soft: #5B6472;
+
+  --font-head: 'Poppins', sans-serif;
+  --font-body: 'Inter', sans-serif;
+
+  --radius: 20px;
+  --radius-sm: 12px;
+  --shadow: 0 12px 30px rgba(27, 42, 74, 0.08);
+  --shadow-lg: 0 20px 50px rgba(27, 42, 74, 0.14);
+
+  --container: 1180px;
+  --transition: 0.3s cubic-bezier(.25,.8,.25,1);
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  color: var(--ink);
+  background: var(--cream);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-head);
+  color: var(--navy);
+  margin: 0;
+  line-height: 1.2;
+}
+
+p { margin: 0; }
+
+a { text-decoration: none; color: inherit; }
+
+ul { margin: 0; padding: 0; list-style: none; }
+
+img { max-width: 100%; display: block; }
+
+.icon {
+  width: 1em;
+  height: 1em;
+  flex-shrink: 0;
+  vertical-align: -0.15em;
+}
+
+.container {
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ===========================
+   Buttons
+   =========================== */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: var(--font-head);
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding: 12px 24px;
+  border-radius: 999px;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: transform var(--transition), box-shadow var(--transition), background var(--transition), color var(--transition);
+  white-space: nowrap;
+}
+
+.btn:active { transform: scale(0.97); }
+
+.btn--primary {
+  background: var(--coral);
+  color: var(--white);
+  box-shadow: 0 8px 20px rgba(255, 107, 74, 0.35);
+}
+.btn--primary:hover {
+  background: var(--coral-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 26px rgba(255, 107, 74, 0.45);
+}
+
+.btn--ghost {
+  background: transparent;
+  color: var(--navy);
+  border-color: var(--navy);
+}
+.btn--ghost:hover {
+  background: var(--navy);
+  color: var(--white);
+  transform: translateY(-2px);
+}
+
+.btn--white {
+  background: var(--white);
+  color: var(--coral-dark);
+}
+.btn--white:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 26px rgba(0,0,0,0.18);
+}
+
+.btn--lg { padding: 16px 32px; font-size: 1.05rem; }
+
+/* ===========================
+   Reveal animation
+   =========================== */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal[data-delay="1"] { transition-delay: 0.1s; }
+.reveal[data-delay="2"] { transition-delay: 0.2s; }
+.reveal[data-delay="3"] { transition-delay: 0.3s; }
+
+/* ===========================
+   Nav
+   =========================== */
+
+.nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  padding: 18px 0;
+  transition: background var(--transition), box-shadow var(--transition), padding var(--transition);
+}
+
+.nav.scrolled {
+  background: rgba(250, 247, 242, 0.85);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 4px 20px rgba(27, 42, 74, 0.08);
+  padding: 10px 0;
+}
+
+.nav__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.nav__logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.nav__logo-mark { display: flex; }
+.nav__logo-mark img {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.nav__logo-text {
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: 1.15rem;
+  color: var(--navy);
+}
+.nav__logo-text span { color: var(--coral); }
+
+.nav__links {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+.nav__link {
+  font-weight: 500;
+  font-size: 0.95rem;
+  color: var(--navy);
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: none;
+  border: none;
+  font-family: var(--font-body);
+  cursor: pointer;
+  padding: 4px 0;
+}
+
+.nav__link::after {
+  content: '';
+  position: absolute;
+  left: 0; bottom: -4px;
+  height: 2px;
+  width: 0;
+  background: var(--coral);
+  transition: width var(--transition);
+}
+.nav__link:hover::after { width: 100%; }
+
+.nav__dropdown {
+  position: relative;
+}
+
+.nav__dropdown-menu {
+  position: absolute;
+  top: calc(100% + 14px);
+  left: 50%;
+  transform: translate(-50%, 10px);
+  background: var(--white);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-lg);
+  padding: 10px;
+  min-width: 220px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--transition), transform var(--transition);
+}
+
+.nav__dropdown:hover .nav__dropdown-menu,
+.nav__dropdown.is-open .nav__dropdown-menu {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translate(-50%, 0);
+}
+
+.nav__dropdown-menu a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  color: var(--ink);
+  transition: background var(--transition), color var(--transition);
+}
+.nav__dropdown-menu a .icon {
+  width: 1.1em;
+  height: 1.1em;
+  color: var(--coral);
+}
+.nav__dropdown-menu a:hover {
+  background: var(--cream);
+  color: var(--coral-dark);
+}
+
+.nav__cta { flex-shrink: 0; }
+
+.nav__burger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 40px;
+  height: 40px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+.nav__burger span {
+  display: block;
+  height: 2px;
+  width: 24px;
+  background: var(--navy);
+  margin: 0 auto;
+  transition: transform var(--transition), opacity var(--transition);
+}
+.nav__burger.is-open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav__burger.is-open span:nth-child(2) { opacity: 0; }
+.nav__burger.is-open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* ===========================
+   Hero
+   =========================== */
+
+.hero {
+  position: relative;
+  padding: 160px 0 100px;
+  overflow: hidden;
+  background: linear-gradient(180deg, #FFF6EE 0%, var(--cream) 60%);
+}
+
+.hero__grid {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  align-items: center;
+  gap: 60px;
+}
+
+.eyebrow {
+  display: inline-block;
+  position: relative;
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: 0.8rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--coral-dark);
+  margin-bottom: 22px;
+  padding-bottom: 14px;
+}
+.eyebrow::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 30px;
+  height: 4px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, var(--coral), var(--amber));
+}
+.eyebrow.center {
+  display: block;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  width: fit-content;
+}
+.eyebrow.center::after { left: 50%; transform: translateX(-50%); }
+
+.hero__title {
+  font-size: clamp(2.2rem, 4.4vw, 3.4rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+}
+
+.hero__title-accent {
+  color: var(--coral);
+  position: relative;
+}
+
+.hero__subtitle {
+  margin: 26px 0 0;
+  max-width: 480px;
+  font-size: 1.1rem;
+  color: var(--ink-soft);
+}
+
+.hero__actions {
+  margin-top: 36px;
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.hero__actions .btn .icon {
+  transition: transform var(--transition);
+}
+.hero__actions .btn:hover .icon {
+  transform: translateX(3px);
+}
+
+.hero__trust-row {
+  margin-top: 40px;
+  display: flex;
+  gap: 28px;
+  flex-wrap: wrap;
+}
+.hero__trust-row span {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-head);
+  font-weight: 600;
+  font-size: 0.88rem;
+  color: var(--navy);
+}
+.hero__trust-row .icon {
+  width: 1.2em;
+  height: 1.2em;
+  color: var(--coral);
+}
+
+/* Hero visual: schedule card + floating badges */
+.hero__visual {
+  position: relative;
+  z-index: 2;
+  justify-self: center;
+  width: 100%;
+  max-width: 380px;
+}
+
+@media (min-width: 1024px) {
+  .hero__visual {
+    max-width: 430px;
+  }
+}
+
+.hero__card {
+  background: var(--white);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-lg);
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  animation: cardFloat 7s ease-in-out infinite;
+}
+
+.hero__card-head {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid rgba(27,42,74,0.08);
+}
+.hero__card-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: rgba(27,42,74,0.12);
+}
+.hero__card-dot:nth-child(1) { background: var(--coral); }
+.hero__card-dot:nth-child(2) { background: var(--amber); }
+.hero__card-dot:nth-child(3) { background: var(--mint); }
+.hero__card-title {
+  margin-left: 8px;
+  font-family: var(--font-head);
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--navy);
+}
+
+.hero__card-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.hero__card-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  flex-shrink: 0;
+}
+.hero__card-icon--coral { background: rgba(255, 107, 74, 0.12); color: var(--coral-dark); }
+.hero__card-icon--mint { background: rgba(46, 196, 182, 0.14); color: var(--mint); }
+.hero__card-icon--amber { background: rgba(255, 200, 87, 0.18); color: #B8860B; }
+
+.hero__card-text {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 0;
+}
+.hero__card-text strong {
+  font-family: var(--font-head);
+  font-size: 0.9rem;
+  color: var(--navy);
+}
+.hero__card-text small {
+  font-size: 0.78rem;
+  color: var(--ink-soft);
+}
+
+.hero__card-check {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: rgba(46, 196, 182, 0.16);
+  color: var(--mint);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+.hero__card-check--pending {
+  background: rgba(27,42,74,0.06);
+  color: var(--ink-soft);
+}
+
+.hero__floatcard {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--white);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-lg);
+  padding: 12px 18px;
+  font-family: var(--font-head);
+  z-index: 3;
+}
+.hero__floatcard .icon {
+  width: 1.4em;
+  height: 1.4em;
+  flex-shrink: 0;
+}
+.hero__floatcard div {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.3;
+}
+.hero__floatcard strong {
+  font-size: 0.9rem;
+  color: var(--navy);
+}
+.hero__floatcard span {
+  font-size: 0.7rem;
+  color: var(--ink-soft);
+  font-weight: 500;
+}
+
+.hero__floatcard--rating {
+  top: -24px;
+  right: -28px;
+  animation: floatUpDown 6s ease-in-out infinite;
+}
+.hero__floatcard--rating .icon { color: var(--amber); }
+
+.hero__floatcard--safe {
+  bottom: -22px;
+  left: -32px;
+  font-weight: 600;
+  font-size: 0.85rem;
+  color: var(--navy);
+  animation: floatUpDown 6s ease-in-out infinite;
+  animation-delay: -3s;
+}
+.hero__floatcard--safe .icon { color: var(--mint); }
+
+@keyframes cardFloat {
+  0%, 100% { transform: translateY(0) rotate(-1.5deg); }
+  50% { transform: translateY(-14px) rotate(1deg); }
+}
+
+@keyframes floatUpDown {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+
+/* Hero blobs */
+.hero__blobs {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(8px);
+  opacity: 0.5;
+  animation: blobFloat 14s ease-in-out infinite;
+}
+.blob--1 {
+  width: 320px; height: 320px;
+  top: -80px; left: -100px;
+  background: radial-gradient(circle at 30% 30%, var(--mint), transparent 70%);
+  animation-duration: 16s;
+}
+.blob--2 {
+  width: 380px; height: 380px;
+  top: 60px; right: -140px;
+  background: radial-gradient(circle at 60% 40%, var(--amber), transparent 70%);
+  animation-duration: 20s;
+  animation-delay: -4s;
+}
+.blob--3 {
+  width: 260px; height: 260px;
+  bottom: -100px; left: 40%;
+  background: radial-gradient(circle at 50% 50%, var(--coral), transparent 70%);
+  opacity: 0.25;
+  animation-duration: 18s;
+  animation-delay: -8s;
+}
+
+@keyframes blobFloat {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(30px, -20px) scale(1.08); }
+  66% { transform: translate(-20px, 25px) scale(0.95); }
+}
+
+@media (max-width: 940px) {
+  .hero__grid {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 70px;
+  }
+  .hero__subtitle { margin-left: auto; margin-right: auto; }
+  .hero__content .eyebrow {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .hero__content .eyebrow::after { left: 50%; transform: translateX(-50%); }
+  .hero__actions { justify-content: center; }
+  .hero__trust-row { justify-content: center; }
+  .hero__visual { max-width: 340px; margin-top: 20px; }
+}
+
+/* Scroll cue */
+.scroll-cue {
+  position: absolute;
+  bottom: 28px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  width: 28px;
+  height: 44px;
+  border: 2px solid var(--navy);
+  border-radius: 999px;
+  display: flex;
+  justify-content: center;
+  padding-top: 8px;
+  opacity: 0.5;
+}
+.scroll-cue span {
+  width: 4px;
+  height: 8px;
+  border-radius: 2px;
+  background: var(--coral);
+  animation: scrollCue 1.6s ease-in-out infinite;
+}
+@keyframes scrollCue {
+  0% { transform: translateY(0); opacity: 1; }
+  100% { transform: translateY(14px); opacity: 0; }
+}
+
+/* ===========================
+   Trust strip
+   =========================== */
+
+.trust {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(120deg, var(--navy), var(--navy-light));
+  padding: 48px 0;
+}
+.trust__inner {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  color: var(--white);
+  position: relative;
+  z-index: 1;
+}
+.trust__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 14px;
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: 0.95rem;
+  letter-spacing: 0.01em;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 18px;
+  padding: 22px 12px;
+  transition: transform var(--transition), background var(--transition);
+}
+.trust__item:hover {
+  transform: translateY(-4px);
+  background: rgba(255, 255, 255, 0.1);
+}
+.trust__item .icon {
+  width: 1.6em;
+  height: 1.6em;
+  color: var(--white);
+}
+.trust__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--coral), var(--amber));
+  box-shadow: 0 10px 24px rgba(255, 107, 74, 0.35);
+  flex-shrink: 0;
+}
+
+@media (min-width: 768px) {
+  .trust { padding: 56px 0; }
+  .trust__inner { gap: 32px; }
+  .trust__item { font-size: 1.1rem; padding: 30px 16px; }
+  .trust__icon { width: 76px; height: 76px; }
+  .trust__item .icon { width: 1.8em; height: 1.8em; }
+}
+
+/* ===========================
+   Section helpers
+   =========================== */
+
+.section-title {
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  max-width: 640px;
+  margin: 0 auto;
+}
+.section-title.center { text-align: center; }
+
+.section-subtitle {
+  margin: 18px auto 0;
+  max-width: 560px;
+  color: var(--ink-soft);
+  font-size: 1.05rem;
+}
+.section-subtitle.center { text-align: center; }
+
+section { padding: 100px 0; }
+
+/* ===========================
+   Services
+   =========================== */
+
+.services { background: var(--cream); }
+
+.cards {
+  margin-top: 56px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 28px;
+}
+
+@media (min-width: 860px) {
+  .cards {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
+  }
+}
+
+.card {
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 32px 28px;
+  box-shadow: var(--shadow);
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-lg);
+}
+
+.card__icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  margin-bottom: 20px;
+  transition: transform var(--transition);
+}
+.card__icon .icon {
+  width: 1.6rem;
+  height: 1.6rem;
+}
+.card:hover .card__icon {
+  transform: rotate(-8deg) scale(1.08);
+}
+.card__icon--coral { background: rgba(255, 107, 74, 0.12); color: var(--coral-dark); }
+.card__icon--mint { background: rgba(46, 196, 182, 0.14); color: var(--mint); }
+.card__icon--amber { background: rgba(255, 200, 87, 0.18); color: #B8860B; }
+
+.card h3 {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+.card p {
+  color: var(--ink-soft);
+  font-size: 0.95rem;
+}
+
+.card__list {
+  margin-top: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.card__list li {
+  font-size: 0.85rem;
+  color: var(--navy);
+  font-weight: 500;
+  padding-left: 22px;
+  position: relative;
+}
+.card__list li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: var(--mint);
+  font-weight: 700;
+}
+
+/* ===========================
+   Values
+   =========================== */
+
+.values { background: var(--white); }
+
+.values__grid {
+  margin-top: 56px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 36px;
+}
+
+.value {
+  position: relative;
+  padding: 32px 28px;
+  border-radius: var(--radius);
+  background: var(--cream);
+  transition: transform var(--transition);
+  overflow: hidden;
+}
+.value:hover { transform: translateY(-6px); }
+
+.value__icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  background: rgba(255, 107, 74, 0.12);
+  color: var(--coral-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 18px;
+}
+.value__icon .icon { width: 1.5rem; height: 1.5rem; }
+
+.value__num {
+  position: absolute;
+  top: 18px;
+  right: 22px;
+  font-family: var(--font-head);
+  font-weight: 800;
+  font-size: 2.4rem;
+  color: var(--coral);
+  opacity: 0.12;
+}
+.value h3 { font-size: 1.15rem; margin-bottom: 8px; }
+.value p { color: var(--ink-soft); font-size: 0.95rem; }
+
+/* ===========================
+   How it works
+   =========================== */
+
+.steps { background: var(--cream); }
+
+.steps__track {
+  position: relative;
+  margin-top: 70px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
+}
+
+.steps__line {
+  position: absolute;
+  top: 30px;
+  left: 12%;
+  right: 12%;
+  height: 3px;
+  background: rgba(27, 42, 74, 0.1);
+  z-index: 0;
+}
+.steps__line::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--coral);
+  width: 0%;
+  transition: width 1.4s cubic-bezier(.25,.8,.25,1);
+}
+.steps__line.is-active::after { width: 100%; }
+
+.step {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+}
+
+.step__circle {
+  width: 60px;
+  height: 60px;
+  margin: 0 auto 20px;
+  border-radius: 50%;
+  background: var(--white);
+  border: 3px solid var(--coral);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-head);
+  font-weight: 800;
+  font-size: 1.3rem;
+  color: var(--coral);
+  box-shadow: var(--shadow);
+  transition: transform var(--transition), background var(--transition), color var(--transition);
+}
+.step:hover .step__circle {
+  background: var(--coral);
+  color: var(--white);
+  transform: scale(1.1);
+}
+
+.step h3 { font-size: 1.05rem; margin-bottom: 8px; }
+.step p { color: var(--ink-soft); font-size: 0.9rem; }
+
+@media (max-width: 860px) {
+  .steps__track { grid-template-columns: 1fr; gap: 50px; }
+  .steps__line { display: none; }
+}
+
+/* ===========================
+   Testimonials
+   =========================== */
+
+.testimonials { background: var(--white); }
+
+.testimonial-slider {
+  margin-top: 56px;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.testimonial-track {
+  position: relative;
+  min-height: 220px;
+}
+
+.testimonial {
+  position: absolute;
+  inset: 0;
+  background: var(--cream);
+  border-radius: var(--radius);
+  padding: 48px 40px 40px;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+  pointer-events: none;
+}
+.testimonial.is-active {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+  position: relative;
+}
+
+.testimonial__quote {
+  width: 34px;
+  height: 34px;
+  color: var(--coral);
+  opacity: 0.25;
+  margin-bottom: 8px;
+}
+
+.stars {
+  color: var(--amber);
+  font-size: 1.3rem;
+  letter-spacing: 4px;
+  margin-bottom: 14px;
+}
+
+.testimonial p {
+  font-size: 1.05rem;
+  color: var(--ink);
+  font-style: italic;
+}
+
+.testimonial__person {
+  margin-top: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.testimonial__avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--navy);
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: 0.85rem;
+}
+
+.testimonial__author {
+  font-family: var(--font-head);
+  font-weight: 600;
+  color: var(--navy);
+  font-size: 0.9rem;
+}
+
+.testimonial-dots {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 28px;
+}
+.testimonial-dots button {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(27, 42, 74, 0.15);
+  cursor: pointer;
+  transition: background var(--transition), transform var(--transition);
+  padding: 0;
+}
+.testimonial-dots button.is-active {
+  background: var(--coral);
+  transform: scale(1.3);
+}
+
+/* ===========================
+   FAQ
+   =========================== */
+
+.faq { background: var(--cream); }
+
+.accordion {
+  margin-top: 50px;
+  max-width: 760px;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.accordion__item {
+  background: var(--white);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.accordion__trigger {
+  width: 100%;
+  text-align: left;
+  background: none;
+  border: none;
+  padding: 22px 26px;
+  font-family: var(--font-head);
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--navy);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  gap: 16px;
+}
+
+.accordion__icon {
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--cream);
+  color: var(--coral);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  transition: transform var(--transition), background var(--transition), color var(--transition);
+}
+
+.accordion__item.is-open .accordion__icon {
+  transform: rotate(45deg);
+  background: var(--coral);
+  color: var(--white);
+}
+
+.accordion__panel {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+}
+.accordion__panel p {
+  padding: 0 26px 22px;
+  color: var(--ink-soft);
+  font-size: 0.95rem;
+}
+
+/* ===========================
+   CTA banner
+   =========================== */
+
+.cta {
+  background: linear-gradient(120deg, var(--coral-dark), var(--coral) 55%, var(--amber));
+  background-size: 200% 200%;
+  animation: gradientShift 10s ease infinite;
+}
+
+@keyframes gradientShift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.cta__inner {
+  text-align: center;
+  color: var(--white);
+}
+.cta__inner h2 {
+  color: var(--white);
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  font-weight: 800;
+}
+.cta__inner p {
+  margin-top: 14px;
+  opacity: 0.9;
+  font-size: 1.05rem;
+}
+.cta__inner .btn { margin-top: 32px; }
+
+/* ===========================
+   Footer
+   =========================== */
+
+.footer {
+  background: var(--navy);
+  color: rgba(255,255,255,0.8);
+  padding-top: 80px;
+}
+
+.footer__grid {
+  display: grid;
+  grid-template-columns: 2fr repeat(3, 1fr);
+  gap: 40px;
+  padding-bottom: 50px;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.footer__brand p {
+  margin-top: 16px;
+  font-size: 0.9rem;
+  max-width: 280px;
+  color: rgba(255,255,255,0.6);
+}
+
+.footer__brand .nav__logo-text { color: var(--white); }
+.footer__brand .nav__logo-text span { color: var(--coral); }
+
+.footer__social {
+  margin-top: 22px;
+  display: flex;
+  gap: 12px;
+}
+.footer__social a {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background var(--transition), transform var(--transition);
+}
+.footer__social a .icon {
+  width: 1.1rem;
+  height: 1.1rem;
+  color: var(--white);
+}
+.footer__social a:hover {
+  background: var(--coral);
+  transform: translateY(-3px);
+}
+
+.footer__col {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.footer__col h4 {
+  color: var(--white);
+  font-size: 0.95rem;
+  margin-bottom: 6px;
+}
+.footer__col a {
+  font-size: 0.9rem;
+  color: rgba(255,255,255,0.65);
+  transition: color var(--transition);
+}
+.footer__col a:hover { color: var(--coral); }
+.footer__hours { font-size: 0.85rem; color: rgba(255,255,255,0.5); }
+
+.footer__bottom {
+  padding: 24px;
+  text-align: center;
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.45);
+}
+
+@media (max-width: 760px) {
+  .footer__grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 480px) {
+  .footer__grid { grid-template-columns: 1fr; }
+}
+
+/* ===========================
+   Responsive nav
+   =========================== */
+
+@media (max-width: 940px) {
+  .nav__links {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: min(78vw, 320px);
+    background: var(--white);
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 8px;
+    padding: 100px 32px 32px;
+    transform: translateX(100%);
+    transition: transform var(--transition);
+    box-shadow: -10px 0 30px rgba(0,0,0,0.1);
+  }
+  .nav__links.is-open { transform: translateX(0); }
+  .nav__link { width: 100%; padding: 12px 0; }
+  .nav__dropdown { width: 100%; }
+  .nav__dropdown-menu {
+    position: static;
+    transform: none;
+    opacity: 1;
+    pointer-events: auto;
+    box-shadow: none;
+    padding: 0 0 0 12px;
+    display: none;
+    min-width: 0;
+  }
+  .nav__dropdown.is-open .nav__dropdown-menu { display: flex; }
+  .nav__cta { display: none; }
+  .nav__burger { display: flex; }
+}
+
+@media (max-width: 640px) {
+  .hero__stats { grid-template-columns: repeat(2, 1fr); }
+  section { padding: 70px 0; }
+
+  /* Trust bar: 2-column grid of badges */
+  .trust__inner {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+  .trust__item {
+    font-size: 0.85rem;
+    padding: 20px 10px;
+  }
+  .trust__icon {
+    width: 56px;
+    height: 56px;
+  }
+  .trust__item .icon {
+    width: 1.5em;
+    height: 1.5em;
+  }
+
+  /* Hero trust row: shrink + center so all three fit on one line */
+  .hero__trust-row {
+    justify-content: center;
+    gap: 14px;
+    flex-wrap: nowrap;
+  }
+  .hero__trust-row span {
+    font-size: 0.78rem;
+    gap: 5px;
+    white-space: nowrap;
+  }
+  .hero__trust-row .icon {
+    width: 1.05em;
+    height: 1.05em;
+  }
+}
+
+/* ===========================
+   Floating WhatsApp button
+   =========================== */
+
+.whatsapp-float {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: #25D366;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 24px rgba(37, 211, 102, 0.45);
+  z-index: 999;
+  transition: transform var(--transition), box-shadow var(--transition);
+  animation: whatsappPulse 2.4s ease-in-out infinite;
+}
+.whatsapp-float .icon {
+  width: 30px;
+  height: 30px;
+  color: var(--white);
+}
+.whatsapp-float:hover {
+  transform: scale(1.08);
+  box-shadow: 0 14px 30px rgba(37, 211, 102, 0.55);
+}
+
+@keyframes whatsappPulse {
+  0%, 100% { box-shadow: 0 10px 24px rgba(37, 211, 102, 0.45); }
+  50% { box-shadow: 0 10px 24px rgba(37, 211, 102, 0.45), 0 0 0 10px rgba(37, 211, 102, 0.15); }
+}
+
+@media (max-width: 640px) {
+  .whatsapp-float {
+    right: 16px;
+    bottom: 16px;
+    width: 52px;
+    height: 52px;
+  }
+  .whatsapp-float .icon {
+    width: 26px;
+    height: 26px;
+  }
+}
+
+/* ===========================
+   Booking / quote modal
+   =========================== */
+
+.modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity var(--transition), visibility var(--transition);
+}
+.modal.is-open {
+  visibility: visible;
+  opacity: 1;
+}
+.modal__overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(27, 42, 74, 0.55);
+  backdrop-filter: blur(2px);
+}
+.modal__dialog {
+  position: relative;
+  background: var(--white);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-lg);
+  padding: 40px;
+  width: 100%;
+  max-width: 480px;
+  max-height: 90vh;
+  overflow-y: auto;
+  transform: translateY(16px) scale(0.98);
+  transition: transform var(--transition);
+}
+.modal.is-open .modal__dialog {
+  transform: translateY(0) scale(1);
+}
+.modal__close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: none;
+  background: var(--cream);
+  color: var(--navy);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background var(--transition), color var(--transition);
+}
+.modal__close:hover {
+  background: var(--coral);
+  color: var(--white);
+}
+.modal__close .icon { width: 18px; height: 18px; }
+
+.modal__dialog h3 {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--navy);
+  padding-right: 30px;
+}
+.modal__subtitle {
+  margin-top: 8px;
+  color: var(--ink-soft);
+  font-size: 0.95rem;
+}
+
+.modal__form {
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.modal__form label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--navy);
+}
+.modal__form input,
+.modal__form select,
+.modal__form textarea {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 1.5px solid rgba(27, 42, 74, 0.12);
+  background: var(--cream);
+  color: var(--ink);
+  resize: vertical;
+}
+.modal__form input:focus,
+.modal__form select:focus,
+.modal__form textarea:focus {
+  outline: none;
+  border-color: var(--coral);
+}
+.modal__form .btn {
+  margin-top: 8px;
+  width: 100%;
+  justify-content: center;
+}
+
+@media (max-width: 480px) {
+  .modal__dialog { padding: 28px 22px; }
+}
+
+</style>
+</head>
+<body>
+
+  <!-- ============ ICON SPRITE ============ -->
+  <svg style="display:none" aria-hidden="true">
+    <symbol id="icon-van" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M3 16V8a1 1 0 0 1 1-1h10l5 4v5a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1Z"/>
+      <path d="M14 7v6h6"/>
+      <circle cx="7.5" cy="17.5" r="1.6"/>
+      <circle cx="16.5" cy="17.5" r="1.6"/>
+    </symbol>
+    <symbol id="icon-baby" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="12" r="9"/>
+      <path d="M8 13.5c.8 1.2 2.2 2 4 2s3.2-.8 4-2"/>
+      <line x1="9" y1="9.5" x2="9" y2="10.5"/>
+      <line x1="15" y1="9.5" x2="15" y2="10.5"/>
+    </symbol>
+    <symbol id="icon-home" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M3 11.5 12 4l9 7.5"/>
+      <path d="M5 10v9a1 1 0 0 0 1 1h4v-5h4v5h4a1 1 0 0 0 1-1v-9"/>
+    </symbol>
+    <symbol id="icon-paw" viewBox="0 0 24 24" fill="currentColor" stroke="none">
+      <circle cx="6.2" cy="9.5" r="2"/>
+      <circle cx="11" cy="5.8" r="2"/>
+      <circle cx="16" cy="5.8" r="2"/>
+      <circle cx="20" cy="9.8" r="2"/>
+      <path d="M12.7 11.3c-3 0-6.7 2.3-6.7 5.6a3 3 0 0 0 3 3c1.1 0 1.9-.5 3-.5s1.9.5 3 .5a3 3 0 0 0 3-3c0-3.3-2.4-5.6-5.3-5.6Z"/>
+    </symbol>
+    <symbol id="icon-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 3 4 6v5c0 4.5 3.2 8.3 8 10 4.8-1.7 8-5.5 8-10V6Z"/>
+      <path d="M9 12l2 2 4-4"/>
+    </symbol>
+    <symbol id="icon-heart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 21s-7-4.6-9.5-9C1 8.5 2.5 5 6 5c2 0 3.5 1.2 4.5 2.5C11.5 6.2 13 5 15 5c3.5 0 5 3.5 3.5 7-2.5 4.4-9.5 9-9.5 9Z"/>
+    </symbol>
+    <symbol id="icon-star" viewBox="0 0 24 24" fill="currentColor" stroke="none">
+      <path d="m12 2 2.9 6.5 7.1.6-5.4 4.7 1.6 7-6.2-3.7L6 20.8l1.6-7L2.2 9.1l7.1-.6Z"/>
+    </symbol>
+    <symbol id="icon-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="12" r="9"/>
+      <path d="M12 7v5l3.2 1.8"/>
+    </symbol>
+    <symbol id="icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M5 12h14M13 6l6 6-6 6"/>
+    </symbol>
+    <symbol id="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M6 6l12 12M18 6L6 18"/>
+    </symbol>
+    <symbol id="icon-quote" viewBox="0 0 24 24" fill="currentColor" stroke="none">
+      <path d="M9.6 4C6 5 3.5 8.3 3.5 12.4c0 3 1.8 5.1 4.3 5.1 2 0 3.5-1.5 3.5-3.5 0-1.8-1.3-3.2-3-3.4-.1 0-.2 0-.2-.1 0-.1.1-.2.2-.3 1.1-1.2 2.6-2 4-2.4L11.4 4c-.6.1-1.2.1-1.8 0Zm10 0c-3.6 1-6.1 4.3-6.1 8.4 0 3 1.8 5.1 4.3 5.1 2 0 3.5-1.5 3.5-3.5 0-1.8-1.3-3.2-3-3.4-.1 0-.2 0-.2-.1 0-.1.1-.2.2-.3 1.1-1.2 2.6-2 4-2.4L21.4 4c-.6.1-1.2.1-1.8 0Z"/>
+    </symbol>
+    <symbol id="icon-facebook" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 8.5h2V5.5h-2c-2 0-3.5 1.5-3.5 3.5v2H9v3h2.5v6.5h3V13.5H17l.5-3h-3v-1.5c0-.3.2-.5.5-.5Z"/>
+    </symbol>
+    <symbol id="icon-instagram" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="3" y="3" width="18" height="18" rx="5"/>
+      <circle cx="12" cy="12" r="4"/>
+      <circle cx="17.5" cy="6.5" r="1"/>
+    </symbol>
+    <symbol id="icon-tiktok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M14 3v10.5a3.5 3.5 0 1 1-3-3.46"/>
+      <path d="M14 3c0 2.5 2 4.5 4.5 4.5"/>
+    </symbol>
+    <symbol id="icon-whatsapp" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 3a8 8 0 0 0-6.9 12L4 21l6.2-1.6A8 8 0 1 0 12 3Z"/>
+      <path d="M8.5 8.5c.2 2.5 2.5 5 5 5.2.6 0 1.6-.6 1.8-1.2.1-.3 0-.5-.2-.7l-1.4-.9c-.2-.1-.4-.1-.6 0l-.6.5a4 4 0 0 1-2-2l.5-.6c.1-.2.1-.4 0-.6l-.9-1.5c-.2-.2-.4-.2-.7-.2-.6.1-1 1-1 1.7Z" fill="currentColor" stroke="none"/>
+    </symbol>
+  </svg>
+
+  <!-- ============ NAV ============ -->
+  <header class="nav" id="nav">
+    <div class="nav__inner container">
+      <a href="#top" class="nav__logo">
+        <span class="nav__logo-mark">
+          <img src="assets/logo-original.png" alt="CliPie Power Drives logo" width="42" height="42" />
+        </span>
+        <span class="nav__logo-text">CliPie <span>Power Drives</span></span>
+      </a>
+
+      <nav class="nav__links" id="navLinks">
+        <a href="#top" class="nav__link">Home</a>
+        <div class="nav__dropdown">
+          <button class="nav__link nav__link--btn" id="servicesToggle">
+            Services
+            <svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="nav__dropdown-menu">
+            <a href="#school-transport"><svg class="icon"><use href="#icon-van"/></svg> School Transport</a>
+            <a href="#baby-sitters"><svg class="icon"><use href="#icon-baby"/></svg> Baby Sitters</a>
+            <a href="#house-sitters"><svg class="icon"><use href="#icon-home"/></svg> House Sitters</a>
+            <a href="#pet-sitters"><svg class="icon"><use href="#icon-paw"/></svg> Pet Sitters</a>
+          </div>
+        </div>
+        <a href="#how-it-works" class="nav__link">How It Works</a>
+        <a href="#testimonials" class="nav__link">Reviews</a>
+        <a href="#faq" class="nav__link">FAQ</a>
+        <a href="#contact" class="nav__link">Contact</a>
+      </nav>
+
+      <a href="#" class="btn btn--primary nav__cta js-open-form">Get a Quote</a>
+
+      <button class="nav__burger" id="burger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ============ HERO ============ -->
+  <section class="hero" id="top">
+    <div class="hero__blobs" aria-hidden="true">
+      <div class="blob blob--1"></div>
+      <div class="blob blob--2"></div>
+      <div class="blob blob--3"></div>
+    </div>
+
+    <div class="container hero__grid">
+      <div class="hero__content">
+        <p class="eyebrow reveal">Your Family's Reliable Partner</p>
+        <h1 class="hero__title reveal">
+          Safe rides,<br>
+          <span class="hero__title-accent">trusted care</span>,<br>
+          total peace of mind.
+        </h1>
+        <p class="hero__subtitle reveal" data-delay="1">
+          Safe school transport. Trusted babysitting. Dependable house and pet
+          sitting. All tailored to meet your family's unique needs.
+        </p>
+        <div class="hero__actions reveal" data-delay="2">
+          <a href="#" class="btn btn--primary btn--lg js-open-form">
+            Book Now <svg class="icon"><use href="#icon-arrow"/></svg>
+          </a>
+          <a href="#services" class="btn btn--ghost btn--lg">Learn More</a>
+        </div>
+
+        <div class="hero__trust-row reveal" data-delay="3">
+          <span><svg class="icon"><use href="#icon-shield"/></svg> Fully Insured</span>
+          <span><svg class="icon"><use href="#icon-star"/></svg> 5-Star Rated</span>
+          <span><svg class="icon"><use href="#icon-heart"/></svg> Tailored Care</span>
+        </div>
+      </div>
+
+      <div class="hero__visual reveal" data-delay="2">
+        <div class="hero__card">
+          <div class="hero__card-head">
+            <span class="hero__card-dot"></span>
+            <span class="hero__card-dot"></span>
+            <span class="hero__card-dot"></span>
+            <span class="hero__card-title">Today's Schedule</span>
+          </div>
+
+          <div class="hero__card-row">
+            <span class="hero__card-icon hero__card-icon--coral"><svg class="icon"><use href="#icon-van"/></svg></span>
+            <span class="hero__card-text">
+              <strong>School Run</strong>
+              <small>Pickup at 7:30 AM</small>
+            </span>
+            <span class="hero__card-check">✓</span>
+          </div>
+          <div class="hero__card-row">
+            <span class="hero__card-icon hero__card-icon--mint"><svg class="icon"><use href="#icon-baby"/></svg></span>
+            <span class="hero__card-text">
+              <strong>Babysitting</strong>
+              <small>Afternoon &amp; homework</small>
+            </span>
+            <span class="hero__card-check">✓</span>
+          </div>
+          <div class="hero__card-row">
+            <span class="hero__card-icon hero__card-icon--amber"><svg class="icon"><use href="#icon-home"/></svg></span>
+            <span class="hero__card-text">
+              <strong>House Check</strong>
+              <small>Plants &amp; mail collected</small>
+            </span>
+            <span class="hero__card-check">✓</span>
+          </div>
+          <div class="hero__card-row">
+            <span class="hero__card-icon hero__card-icon--coral"><svg class="icon"><use href="#icon-paw"/></svg></span>
+            <span class="hero__card-text">
+              <strong>Pet Walk</strong>
+              <small>Evening walk &amp; feed</small>
+            </span>
+            <span class="hero__card-check hero__card-check--pending">···</span>
+          </div>
+        </div>
+
+        <div class="hero__floatcard hero__floatcard--rating">
+          <svg class="icon"><use href="#icon-star"/></svg>
+          <div>
+            <strong>5.0 Rating</strong>
+            <span>Loved by families</span>
+          </div>
+        </div>
+        <div class="hero__floatcard hero__floatcard--safe">
+          <svg class="icon"><use href="#icon-shield"/></svg>
+          <span>Fully Insured &amp; Vetted</span>
+        </div>
+      </div>
+    </div>
+
+    <a href="#services" class="scroll-cue" aria-label="Scroll down">
+      <span></span>
+    </a>
+  </section>
+
+  <!-- ============ TRUST STRIP ============ -->
+  <section class="trust">
+    <div class="container trust__inner">
+      <div class="trust__item reveal"><span class="trust__icon"><svg class="icon"><use href="#icon-shield"/></svg></span> Reliable &amp; Trusted</div>
+      <div class="trust__item reveal" data-delay="1"><span class="trust__icon"><svg class="icon"><use href="#icon-heart"/></svg></span> Safety First</div>
+      <div class="trust__item reveal" data-delay="2"><span class="trust__icon"><svg class="icon"><use href="#icon-star"/></svg></span> 5-Star Rated</div>
+      <div class="trust__item reveal" data-delay="3"><span class="trust__icon"><svg class="icon"><use href="#icon-clock"/></svg></span> Tailored to Your Family</div>
+    </div>
+  </section>
+
+  <!-- ============ SERVICES ============ -->
+  <section class="services" id="services">
+    <div class="container">
+      <p class="eyebrow center reveal">What we do</p>
+      <h2 class="section-title center reveal">One trusted team for everything that matters</h2>
+      <p class="section-subtitle center reveal" data-delay="1">
+        From the school run to looking after your home and pets while you're away,
+        we treat every family, pet, and home like our own.
+      </p>
+
+      <div class="cards">
+        <article class="card reveal" id="school-transport">
+          <div class="card__icon card__icon--coral"><svg class="icon"><use href="#icon-van"/></svg></div>
+          <h3>School Transport</h3>
+          <p>Your child's safety is our priority. With experienced drivers and well-maintained vehicles, we provide a dependable school transport service you can trust.</p>
+          <ul class="card__list">
+            <li>Experienced, careful drivers</li>
+            <li>Well-maintained vehicles</li>
+            <li>Dependable, every day</li>
+          </ul>
+        </article>
+
+        <article class="card reveal" data-delay="1" id="baby-sitters">
+          <div class="card__icon card__icon--mint"><svg class="icon"><use href="#icon-baby"/></svg></div>
+          <h3>Baby Sitters</h3>
+          <p>Experienced sitters provide nurturing care, ensuring your children are safe, happy, and engaged — whenever you need a helping hand.</p>
+          <ul class="card__list">
+            <li>Nurturing, experienced sitters</li>
+            <li>Safe, happy &amp; engaged kids</li>
+            <li>Flexible scheduling</li>
+          </ul>
+        </article>
+
+        <article class="card reveal" data-delay="2" id="house-sitters">
+          <div class="card__icon card__icon--amber"><svg class="icon"><use href="#icon-home"/></svg></div>
+          <h3>House Sitters</h3>
+          <p>Reliable house sitters keep your property secure and well-maintained, offering total peace of mind whenever you're away.</p>
+          <ul class="card__list">
+            <li>Security check-ins</li>
+            <li>Plant &amp; home care</li>
+            <li>Peace of mind while away</li>
+          </ul>
+        </article>
+
+        <article class="card reveal" data-delay="3" id="pet-sitters">
+          <div class="card__icon card__icon--coral"><svg class="icon"><use href="#icon-paw"/></svg></div>
+          <h3>Pet Sitters</h3>
+          <p>From daily walks to tailored routines, we make sure your pet stays happy, healthy, and loved while you're away.</p>
+          <ul class="card__list">
+            <li>Daily walks &amp; feeding</li>
+            <li>Photo updates</li>
+            <li>Tailored to your pet</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ WHY US ============ -->
+  <section class="values">
+    <div class="container">
+      <p class="eyebrow center reveal">Why families choose CliPie</p>
+      <h2 class="section-title center reveal">Reliability you can set your watch to</h2>
+
+      <div class="values__grid">
+        <div class="value reveal">
+          <div class="value__icon"><svg class="icon"><use href="#icon-clock"/></svg></div>
+          <div class="value__num">01</div>
+          <h3>Reliability</h3>
+          <p>We build strong relationships through honest communication and dependable care, every time.</p>
+        </div>
+        <div class="value reveal" data-delay="1">
+          <div class="value__icon"><svg class="icon"><use href="#icon-shield"/></svg></div>
+          <div class="value__num">02</div>
+          <h3>Safety First</h3>
+          <p>Every service prioritises the well-being of your loved ones and property above all else.</p>
+        </div>
+        <div class="value reveal" data-delay="2">
+          <div class="value__icon"><svg class="icon"><use href="#icon-heart"/></svg></div>
+          <div class="value__num">03</div>
+          <h3>Attention</h3>
+          <p>Each family's unique needs are considered to provide tailored, thoughtful service.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ HOW IT WORKS ============ -->
+  <section class="steps" id="how-it-works">
+    <div class="container">
+      <p class="eyebrow center reveal">Getting started is easy</p>
+      <h2 class="section-title center reveal">How it works</h2>
+
+      <div class="steps__track">
+        <div class="steps__line" id="stepsLine"></div>
+
+        <div class="step reveal">
+          <div class="step__circle">1</div>
+          <h3>Tell us what you need</h3>
+          <p>Reach out with your dates, routine, and any special requirements.</p>
+        </div>
+        <div class="step reveal" data-delay="1">
+          <div class="step__circle">2</div>
+          <h3>We match you with a sitter or driver</h3>
+          <p>A friendly, vetted team member is matched to your family's needs.</p>
+        </div>
+        <div class="step reveal" data-delay="2">
+          <div class="step__circle">3</div>
+          <h3>We take care of everything</h3>
+          <p>Sit back and relax — we'll keep you updated every step of the way.</p>
+        </div>
+        <div class="step reveal" data-delay="3">
+          <div class="step__circle">4</div>
+          <h3>You get peace of mind</h3>
+          <p>Consistent, caring service you can rely on, week after week.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TESTIMONIALS ============ -->
+  <section class="testimonials" id="testimonials">
+    <div class="container">
+      <p class="eyebrow center reveal">Kind words</p>
+      <h2 class="section-title center reveal">Loved by families &amp; their pets</h2>
+
+      <div class="testimonial-slider reveal" data-delay="1">
+        <div class="testimonial-track" id="testimonialTrack">
+          <div class="testimonial">
+            <svg class="testimonial__quote" aria-hidden="true"><use href="#icon-quote"/></svg>
+            <div class="stars">★★★★★</div>
+            <p>"CliPie Power Drives has been an absolute lifesaver for our family! The school transport is always on time and our kids feel safe and looked after. Highly recommended!"</p>
+            <div class="testimonial__person">
+              <div class="testimonial__avatar">LC</div>
+              <div class="testimonial__author">Leon Coetzee</div>
+            </div>
+          </div>
+          <div class="testimonial">
+            <svg class="testimonial__quote" aria-hidden="true"><use href="#icon-quote"/></svg>
+            <div class="stars">★★★★★</div>
+            <p>"I booked a pet sitter through CliPie Power Drives for my Labrador, Bella. While I was away they sent daily photo updates and Bella was happy and well looked after the whole time."</p>
+            <div class="testimonial__person">
+              <div class="testimonial__avatar">AD</div>
+              <div class="testimonial__author">Alicia Davis</div>
+            </div>
+          </div>
+          <div class="testimonial">
+            <svg class="testimonial__quote" aria-hidden="true"><use href="#icon-quote"/></svg>
+            <div class="stars">★★★★★</div>
+            <p>"We used CliPie Power Drives babysitting services for an evening out and we couldn't be happier with everything they have done for us. Our kids loved the sitter!"</p>
+            <div class="testimonial__person">
+              <div class="testimonial__avatar">SG</div>
+              <div class="testimonial__author">Sumari Gerber</div>
+            </div>
+          </div>
+          <div class="testimonial">
+            <svg class="testimonial__quote" aria-hidden="true"><use href="#icon-quote"/></svg>
+            <div class="stars">★★★★★</div>
+            <p>"They watered my plants and even ensured my home looked lived-in while I was away — came back to a spotless house. Such peace of mind!"</p>
+            <div class="testimonial__person">
+              <div class="testimonial__avatar">KK</div>
+              <div class="testimonial__author">Kiara Kemp</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-dots" id="testimonialDots"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FAQ ============ -->
+  <section class="faq" id="faq">
+    <div class="container">
+      <p class="eyebrow center reveal">Questions &amp; answers</p>
+      <h2 class="section-title center reveal">Frequently asked questions</h2>
+
+      <div class="accordion reveal" data-delay="1">
+        <div class="accordion__item">
+          <button class="accordion__trigger">
+            How do you ensure safety during your services?
+            <span class="accordion__icon">+</span>
+          </button>
+          <div class="accordion__panel">
+            <p>Safety is our top priority. We follow strict guidelines, maintain our equipment, and employ qualified professionals across all our services.</p>
+          </div>
+        </div>
+        <div class="accordion__item">
+          <button class="accordion__trigger">
+            What happens if there's an emergency?
+            <span class="accordion__icon">+</span>
+          </button>
+          <div class="accordion__panel">
+            <p>We have protocols in place to address emergencies quickly and keep you informed at all times.</p>
+          </div>
+        </div>
+        <div class="accordion__item">
+          <button class="accordion__trigger">
+            Can I make last-minute bookings?
+            <span class="accordion__icon">+</span>
+          </button>
+          <div class="accordion__panel">
+            <p>Yes, we try our best to accommodate last-minute requests depending on availability, but we cannot promise availability on late requests.</p>
+          </div>
+        </div>
+        <div class="accordion__item">
+          <button class="accordion__trigger">
+            Can I customise my service?
+            <span class="accordion__icon">+</span>
+          </button>
+          <div class="accordion__panel">
+            <p>Yes — we offer flexible options to suit your specific needs and schedule.</p>
+          </div>
+        </div>
+        <div class="accordion__item">
+          <button class="accordion__trigger">
+            How do I contact you if I have more questions?
+            <span class="accordion__icon">+</span>
+          </button>
+          <div class="accordion__panel">
+            <p>You can reach us via email, phone, WhatsApp, or our website's contact form — whatever's easiest for you.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CTA BANNER ============ -->
+  <section class="cta">
+    <div class="container cta__inner reveal">
+      <h2>Ready for one less thing to worry about?</h2>
+      <p>Get in touch today and let's build a plan around your family's routine.</p>
+      <a href="#" class="btn btn--white btn--lg js-open-form">Get Your Free Quote</a>
+    </div>
+  </section>
+
+  <!-- ============ CONTACT / FOOTER ============ -->
+  <footer class="footer" id="contact">
+    <div class="container footer__grid">
+      <div class="footer__brand reveal">
+        <a href="#top" class="nav__logo">
+          <span class="nav__logo-mark">
+            <img src="assets/logo-original.png" alt="CliPie Power Drives logo" width="42" height="42" />
+          </span>
+          <span class="nav__logo-text">CliPie <span>Power Drives</span></span>
+        </a>
+        <p>Your family's reliable partner — safe school transport, trusted babysitting, and dependable house &amp; pet sitting.</p>
+        <div class="footer__social">
+          <a href="https://www.facebook.com/clipiepowerdrives" aria-label="Facebook" target="_blank" rel="noopener"><svg class="icon"><use href="#icon-facebook"/></svg></a>
+          <a href="https://www.instagram.com/clipie_power_drives" aria-label="Instagram" target="_blank" rel="noopener"><svg class="icon"><use href="#icon-instagram"/></svg></a>
+          <a href="https://www.tiktok.com/@clipiepowerdrives" aria-label="TikTok" target="_blank" rel="noopener"><svg class="icon"><use href="#icon-tiktok"/></svg></a>
+          <a href="https://wa.me/27767937070" aria-label="WhatsApp" target="_blank" rel="noopener"><svg class="icon"><use href="#icon-whatsapp"/></svg></a>
+        </div>
+      </div>
+
+      <div class="footer__col reveal" data-delay="1">
+        <h4>Services</h4>
+        <a href="#school-transport">School Transport</a>
+        <a href="#baby-sitters">Baby Sitters</a>
+        <a href="#house-sitters">House Sitters</a>
+        <a href="#pet-sitters">Pet Sitters</a>
+      </div>
+
+      <div class="footer__col reveal" data-delay="2">
+        <h4>Company</h4>
+        <a href="#how-it-works">How It Works</a>
+        <a href="#testimonials">Reviews</a>
+        <a href="#faq">FAQ</a>
+      </div>
+
+      <div class="footer__col reveal" data-delay="3">
+        <h4>Get in touch</h4>
+        <a href="https://wa.me/27767937070" target="_blank" rel="noopener">WhatsApp: +27 76 793 7070</a>
+        <a href="mailto:info@clipiepowerdrives.com">info@clipiepowerdrives.com</a>
+        <p class="footer__hours">We'll get back to you as soon as possible.</p>
+      </div>
+    </div>
+
+    <div class="footer__bottom container">
+      <p>© <span id="year"></span> CliPie Power Drives. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- ============ BOOKING / QUOTE FORM MODAL ============ -->
+  <div class="modal" id="bookingModal" aria-hidden="true">
+    <div class="modal__overlay" data-close-modal></div>
+    <div class="modal__dialog" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <button type="button" class="modal__close" data-close-modal aria-label="Close form">
+        <svg class="icon"><use href="#icon-close"/></svg>
+      </button>
+      <h3 id="modalTitle">Get a Free Quote</h3>
+      <p class="modal__subtitle">Tell us a bit about what you need and we'll get back to you by email.</p>
+      <form class="modal__form" action="https://formsubmit.co/info@clipiepowerdrives.com" method="POST">
+        <input type="hidden" name="_subject" value="New booking enquiry — CliPie Power Drives">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_template" value="table">
+
+        <label>
+          Name
+          <input type="text" name="Name" required>
+        </label>
+        <label>
+          Phone number
+          <input type="tel" name="Phone" required>
+        </label>
+        <label>
+          Email
+          <input type="email" name="Email" required>
+        </label>
+        <label>
+          Service
+          <select name="Service">
+            <option>School Transport</option>
+            <option>Baby Sitting</option>
+            <option>House Sitting</option>
+            <option>Pet Sitting</option>
+            <option>Not sure / other</option>
+          </select>
+        </label>
+        <label>
+          Message
+          <textarea name="Message" rows="3" placeholder="Tell us what you need..."></textarea>
+        </label>
+        <button type="submit" class="btn btn--primary btn--lg">Send Enquiry</button>
+      </form>
+    </div>
+  </div>
+
+  <a href="https://wa.me/27767937070" class="whatsapp-float" target="_blank" rel="noopener" aria-label="Chat with us on WhatsApp">
+    <svg class="icon"><use href="#icon-whatsapp"/></svg>
+  </a>
+
+  <script>
+// ===========================
+// CliPie Power Drives — interactions
+// ===========================
+
+document.addEventListener('DOMContentLoaded', () => {
+  initNav();
+  initReveal();
+  initSteps();
+  initTestimonials();
+  initAccordion();
+  initBookingModal();
+  document.getElementById('year').textContent = new Date().getFullYear();
+});
+
+/* ---------- Booking modal ---------- */
+function initBookingModal() {
+  const modal = document.getElementById('bookingModal');
+  if (!modal) return;
+
+  const openTriggers = document.querySelectorAll('.js-open-form');
+  const closeTriggers = modal.querySelectorAll('[data-close-modal]');
+
+  function openModal(e) {
+    e.preventDefault();
+    modal.classList.add('is-open');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal() {
+    modal.classList.remove('is-open');
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+
+  openTriggers.forEach((el) => el.addEventListener('click', openModal));
+  closeTriggers.forEach((el) => el.addEventListener('click', closeModal));
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal.classList.contains('is-open')) closeModal();
+  });
+}
+
+/* ---------- Nav ---------- */
+function initNav() {
+  const nav = document.getElementById('nav');
+  const burger = document.getElementById('burger');
+  const navLinks = document.getElementById('navLinks');
+  const servicesToggle = document.getElementById('servicesToggle');
+  const dropdown = servicesToggle.closest('.nav__dropdown');
+
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 20);
+  });
+
+  burger.addEventListener('click', () => {
+    burger.classList.toggle('is-open');
+    navLinks.classList.toggle('is-open');
+  });
+
+  servicesToggle.addEventListener('click', (e) => {
+    e.preventDefault();
+    dropdown.classList.toggle('is-open');
+  });
+
+  // close mobile menu when a link is clicked
+  navLinks.querySelectorAll('a').forEach((link) => {
+    link.addEventListener('click', () => {
+      burger.classList.remove('is-open');
+      navLinks.classList.remove('is-open');
+      dropdown.classList.remove('is-open');
+    });
+  });
+}
+
+/* ---------- Scroll reveal ---------- */
+function initReveal() {
+  const items = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+
+  items.forEach((item) => observer.observe(item));
+}
+
+/* ---------- How it works progress line ---------- */
+function initSteps() {
+  const line = document.getElementById('stepsLine');
+  if (!line) return;
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        line.classList.add('is-active');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.4 });
+
+  observer.observe(line.closest('.steps__track'));
+}
+
+/* ---------- Testimonial slider ---------- */
+function initTestimonials() {
+  const track = document.getElementById('testimonialTrack');
+  const dotsContainer = document.getElementById('testimonialDots');
+  if (!track || !dotsContainer) return;
+
+  const slides = Array.from(track.children);
+  let current = 0;
+  let timer;
+
+  slides.forEach((_, i) => {
+    const dot = document.createElement('button');
+    dot.setAttribute('aria-label', `Go to testimonial ${i + 1}`);
+    if (i === 0) dot.classList.add('is-active');
+    dot.addEventListener('click', () => goTo(i));
+    dotsContainer.appendChild(dot);
+  });
+
+  slides[0].classList.add('is-active');
+  const dots = Array.from(dotsContainer.children);
+
+  function goTo(index) {
+    slides[current].classList.remove('is-active');
+    dots[current].classList.remove('is-active');
+    current = (index + slides.length) % slides.length;
+    slides[current].classList.add('is-active');
+    dots[current].classList.add('is-active');
+    resetTimer();
+  }
+
+  function resetTimer() {
+    clearInterval(timer);
+    timer = setInterval(() => goTo(current + 1), 6000);
+  }
+
+  resetTimer();
+}
+
+/* ---------- FAQ accordion ---------- */
+function initAccordion() {
+  const items = document.querySelectorAll('.accordion__item');
+
+  items.forEach((item) => {
+    const trigger = item.querySelector('.accordion__trigger');
+    const panel = item.querySelector('.accordion__panel');
+
+    trigger.addEventListener('click', () => {
+      const isOpen = item.classList.contains('is-open');
+
+      items.forEach((other) => {
+        other.classList.remove('is-open');
+        other.querySelector('.accordion__panel').style.maxHeight = null;
+      });
+
+      if (!isOpen) {
+        item.classList.add('is-open');
+        panel.style.maxHeight = panel.scrollHeight + 'px';
+      }
+    });
+  });
+}
+
+</script>
+</body>
+</html>
