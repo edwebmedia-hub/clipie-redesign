@@ -702,6 +702,9 @@ img { max-width: 100%; display: block; }
   color: var(--amber);
   flex-shrink: 0;
 }
+.trust__item--clone {
+  display: none;
+}
 @media (min-width: 768px) {
   .trust { padding: 48px 0; }
   .trust__item { font-size: 1.05rem; padding: 12px 40px; }
@@ -1272,35 +1275,36 @@ section { padding: 100px 0; }
   .hero__stats { grid-template-columns: repeat(2, 1fr); }
   section { padding: 70px 0; }
 
-  /* Trust bar: horizontal snap slider, one item at a time */
+  /* Trust bar: auto-scrolling marquee, 2 items visible at a time */
+  .trust .container {
+    max-width: none;
+    padding: 0;
+  }
   .trust__inner {
     display: flex;
     flex-wrap: nowrap;
-    justify-content: flex-start;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-  }
-  .trust__inner::-webkit-scrollbar {
-    display: none;
+    width: max-content;
+    animation: trustMarquee 16s linear infinite;
   }
   .trust__item {
-    flex: 0 0 100%;
-    scroll-snap-align: center;
+    flex: 0 0 50vw;
+    box-sizing: border-box;
     justify-content: center;
     flex-direction: column;
     text-align: center;
     gap: 8px;
-    padding: 0;
-    font-size: 0.95rem;
+    padding: 0 10px;
+    font-size: 0.82rem;
+  }
+  .trust__item--clone {
+    display: flex;
   }
   .trust__item + .trust__item::before {
     display: none;
   }
   .trust__item .icon {
-    width: 1.8em;
-    height: 1.8em;
+    width: 1.6em;
+    height: 1.6em;
   }
 
   /* Hero trust row: shrink + center so all three fit on one line */
@@ -1318,6 +1322,11 @@ section { padding: 100px 0; }
     width: 1.05em;
     height: 1.05em;
   }
+}
+
+@keyframes trustMarquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
 }
 
 /* ===========================
