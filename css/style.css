@@ -1272,25 +1272,35 @@ section { padding: 100px 0; }
   .hero__stats { grid-template-columns: repeat(2, 1fr); }
   section { padding: 70px 0; }
 
-  /* Trust bar: 2-column grid, no dividers */
+  /* Trust bar: horizontal snap slider, one item at a time */
   .trust__inner {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 18px 12px;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .trust__inner::-webkit-scrollbar {
+    display: none;
   }
   .trust__item {
+    flex: 0 0 100%;
+    scroll-snap-align: center;
+    justify-content: center;
     flex-direction: column;
     text-align: center;
     gap: 8px;
     padding: 0;
-    font-size: 0.82rem;
+    font-size: 0.95rem;
   }
   .trust__item + .trust__item::before {
     display: none;
   }
   .trust__item .icon {
-    width: 1.6em;
-    height: 1.6em;
+    width: 1.8em;
+    height: 1.8em;
   }
 
   /* Hero trust row: shrink + center so all three fit on one line */
