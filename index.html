@@ -670,60 +670,54 @@ img { max-width: 100%; display: block; }
   position: relative;
   overflow: hidden;
   background: linear-gradient(120deg, var(--navy), var(--navy-light));
-  padding: 48px 0;
+  padding: 40px 0;
 }
 .trust__inner {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 24px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
   color: var(--white);
   position: relative;
   z-index: 1;
 }
 .trust__item {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  text-align: center;
-  gap: 14px;
+  gap: 12px;
   font-family: var(--font-head);
   font-weight: 700;
   font-size: 0.95rem;
-  letter-spacing: 0.01em;
-  color: var(--navy);
-  background: var(--white);
-  border-radius: var(--radius);
-  padding: 26px 12px;
-  box-shadow: var(--shadow);
-  transition: transform var(--transition), box-shadow var(--transition);
+  letter-spacing: 0.02em;
+  padding: 10px 28px;
+  position: relative;
 }
-.trust__item:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-lg);
-}
-.trust__item .icon {
-  width: 1.6em;
-  height: 1.6em;
-  color: var(--white);
+.trust__item + .trust__item::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1px;
+  height: 26px;
+  background: rgba(255, 255, 255, 0.18);
 }
 .trust__icon {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 64px;
-  height: 64px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, var(--coral), var(--amber));
-  box-shadow: 0 10px 24px rgba(255, 107, 74, 0.35);
+}
+.trust__item .icon {
+  width: 1.4em;
+  height: 1.4em;
+  color: var(--amber);
   flex-shrink: 0;
 }
 
 @media (min-width: 768px) {
-  .trust { padding: 56px 0; }
-  .trust__inner { gap: 32px; }
-  .trust__item { font-size: 1.1rem; padding: 30px 16px; }
-  .trust__icon { width: 76px; height: 76px; }
-  .trust__item .icon { width: 1.8em; height: 1.8em; }
+  .trust { padding: 48px 0; }
+  .trust__item { font-size: 1.05rem; padding: 12px 40px; }
+  .trust__item .icon { width: 1.6em; height: 1.6em; }
 }
 
 /* ===========================
@@ -1290,22 +1284,25 @@ section { padding: 100px 0; }
   .hero__stats { grid-template-columns: repeat(2, 1fr); }
   section { padding: 70px 0; }
 
-  /* Trust bar: 2-column grid of badges */
+  /* Trust bar: 2-column grid, no dividers */
   .trust__inner {
+    display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 16px;
+    gap: 18px 12px;
   }
   .trust__item {
-    font-size: 0.85rem;
-    padding: 20px 10px;
+    flex-direction: column;
+    text-align: center;
+    gap: 8px;
+    padding: 0;
+    font-size: 0.82rem;
   }
-  .trust__icon {
-    width: 56px;
-    height: 56px;
+  .trust__item + .trust__item::before {
+    display: none;
   }
   .trust__item .icon {
-    width: 1.5em;
-    height: 1.5em;
+    width: 1.6em;
+    height: 1.6em;
   }
 
   /* Hero trust row: shrink + center so all three fit on one line */
