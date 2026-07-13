@@ -1917,6 +1917,40 @@ section { padding: 116px 0; }
 /* Stats bar — sits on cream, strong numbers */
 .stats-bar { background: var(--cream) !important; border-top: none !important; border-bottom: 1px solid rgba(27,42,74,0.07) !important; }
 
+/* ===========================
+   Card image focal points + floating icon badge
+   =========================== */
+
+/* Per-card focal points so subjects aren't cropped out */
+#school-transport .card__img img { object-position: center 70%; }
+#baby-sitters    .card__img img { object-position: center top; }
+#house-sitters   .card__img img { object-position: center 40%; }
+#pet-sitters     .card__img img { object-position: center 35%; }
+
+/* Float the icon as an overlapping badge on the photo edge */
+.card { position: relative; }
+
+.card:has(.card__img) .card__icon {
+  position: absolute;
+  top: 178px;
+  left: 24px;
+  z-index: 2;
+  width: 46px;
+  height: 46px;
+  border-radius: 14px;
+  border: 2.5px solid rgba(255,255,255,0.85);
+  box-shadow: 0 6px 16px rgba(27,42,74,0.22);
+  margin: 0;
+  font-size: 0;
+}
+.card:has(.card__img) .card__icon .icon {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+/* Push h3 down to clear the floating badge */
+.card:has(.card__img) h3 { margin-top: 30px; }
+
 </style>
 </head>
 <body>
