@@ -2110,6 +2110,96 @@ section { padding: 116px 0; }
 }
 
 /* ===========================
+   PHOTO BREAK — cinematic full-bleed section above FAQ
+   =========================== */
+
+.photo-break {
+  position: relative;
+  height: clamp(400px, 55vw, 640px);
+  overflow: hidden;
+}
+
+.photo-break__img {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.photo-break__img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 30%;
+  will-change: transform;
+}
+
+.photo-break__overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(
+    105deg,
+    rgba(38, 71, 108, 0.88) 0%,
+    rgba(38, 71, 108, 0.62) 50%,
+    rgba(38, 71, 108, 0.18) 100%
+  );
+  display: flex;
+  align-items: center;
+}
+
+.photo-break__inner {
+  padding: 60px 0;
+}
+
+.photo-break__heading {
+  font-family: var(--font-head);
+  font-size: clamp(2.8rem, 6vw, 5rem);
+  font-weight: 800;
+  color: var(--white);
+  letter-spacing: -0.04em;
+  line-height: 1.0;
+  margin: 0 0 24px;
+}
+
+.photo-break__sub {
+  font-size: 1.08rem;
+  color: rgba(255, 255, 255, 0.75);
+  margin: 0 0 36px;
+  font-family: var(--font-head);
+  font-weight: 500;
+}
+
+.photo-break__cta {
+  background: var(--white) !important;
+  color: var(--navy) !important;
+  font-weight: 700;
+  box-shadow: 0 12px 32px rgba(0,0,0,0.22) !important;
+}
+.photo-break__cta:hover {
+  background: var(--white) !important;
+  color: var(--coral) !important;
+  transform: translateY(-3px) !important;
+  box-shadow: 0 18px 40px rgba(0,0,0,0.28) !important;
+}
+
+@media (max-width: 640px) {
+  .photo-break { height: clamp(480px, 85vw, 560px); }
+  .photo-break__heading { font-size: clamp(2.4rem, 9vw, 3rem); }
+  .photo-break__overlay {
+    background: linear-gradient(
+      180deg,
+      rgba(38, 71, 108, 0.75) 0%,
+      rgba(38, 71, 108, 0.88) 100%
+    );
+  }
+}
+
+/* Parallax on scroll — applied via JS */
+@media (prefers-reduced-motion: no-preference) {
+  .photo-break__img img { transition: transform 0.1s linear; }
+}
+
+/* ===========================
    FEATURED CARD — School Transport full-width horizontal
    =========================== */
 
@@ -2657,6 +2747,20 @@ section { padding: 116px 0; }
     </div>
   </section>
 
+  <!-- ============ PHOTO BREAK ============ -->
+  <section class="photo-break" aria-hidden="false">
+    <div class="photo-break__img">
+      <img src="https://images.pexels.com/photos/8617994/pexels-photo-8617994.jpeg?auto=compress&cs=tinysrgb&w=1600&h=700&fit=crop" alt="Happy students raising their hands in a classroom" loading="lazy" width="1600" height="700">
+    </div>
+    <div class="photo-break__overlay">
+      <div class="container photo-break__inner reveal">
+        <h2 class="photo-break__heading">Safe rides.<br>Happy kids.<br>Every single day.</h2>
+        <p class="photo-break__sub">Trusted by over 200 Cape Town families — and counting.</p>
+        <a href="#booking" class="btn btn--white btn--lg photo-break__cta">Book a spot <svg class="icon" aria-hidden="true"><use href="#icon-arrow"/></svg></a>
+      </div>
+    </div>
+  </section>
+
   <!-- ============ FAQ ============ -->
   <section class="faq" id="faq">
     <div class="container">
@@ -2829,9 +2933,26 @@ document.addEventListener('DOMContentLoaded', () => {
   initTestimonials();
   initAccordion();
   initBookingModal();
+  initPhotoBreakParallax();
   initStatsCountUp();
   document.getElementById('year').textContent = new Date().getFullYear();
 });
+
+/* ---------- Photo break parallax ---------- */
+function initPhotoBreakParallax() {
+  const section = document.querySelector('.photo-break');
+  const img = section && section.querySelector('img');
+  if (!img || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const onScroll = () => {
+    const rect = section.getBoundingClientRect();
+    const visible = rect.bottom > 0 && rect.top < window.innerHeight;
+    if (!visible) return;
+    const progress = (window.innerHeight - rect.top) / (window.innerHeight + rect.height);
+    img.style.transform = `translateY(${(progress - 0.5) * 80}px)`;
+  };
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+}
 
 /* ---------- Stats count-up ---------- */
 function initStatsCountUp() {
