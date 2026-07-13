@@ -2109,6 +2109,140 @@ section { padding: 116px 0; }
   .card:hover { transform: none !important; }
 }
 
+/* ===========================
+   FEATURED CARD — School Transport full-width horizontal
+   =========================== */
+
+.card--featured {
+  padding: 0;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 860px) {
+  .cards {
+    grid-template-columns: repeat(3, 1fr) !important;
+  }
+  .card--featured {
+    grid-column: 1 / -1;
+    grid-template-columns: 1.1fr 0.9fr;
+    align-items: stretch;
+  }
+  .card--featured .card__img {
+    margin: 0 !important;
+    height: 100% !important;
+    min-height: 320px;
+    border-radius: var(--radius) 0 0 var(--radius);
+  }
+  .card--featured .card__icon {
+    position: static !important;
+    top: auto !important;
+    left: auto !important;
+    width: 52px !important;
+    height: 52px !important;
+    margin-bottom: 20px;
+  }
+  .card--featured h3 {
+    margin-top: 0 !important;
+    font-size: 1.7rem !important;
+    letter-spacing: -0.025em;
+  }
+  .card--featured p { font-size: 1.02rem; line-height: 1.72; }
+}
+
+.card--featured .card__img img {
+  object-position: center 65% !important;
+}
+
+.card--featured .card__body {
+  padding: 40px 44px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Mobile: featured card vertical like normal */
+@media (max-width: 859px) {
+  .card--featured .card__img {
+    margin: 0 0 0 0 !important;
+    height: 220px !important;
+    border-radius: var(--radius) var(--radius) 0 0;
+  }
+  .card--featured .card__icon {
+    position: static !important;
+    top: auto !important;
+    left: auto !important;
+    margin: 20px 0 16px !important;
+  }
+  .card--featured h3 { margin-top: 0 !important; }
+  .card--featured .card__body { padding: 0 28px 32px; }
+}
+
+/* ===========================
+   BUTTON SHIMMER — primary CTA feels premium
+   =========================== */
+
+.btn--primary {
+  position: relative;
+  overflow: hidden;
+}
+.btn--primary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.22), transparent);
+  transform: skewX(-20deg);
+  transition: none;
+}
+.btn--primary:hover::before {
+  left: 160%;
+  transition: left 0.55s ease;
+}
+
+/* ===========================
+   HERO TITLE — outlined accent word
+   =========================== */
+
+.hero__title-accent {
+  -webkit-text-stroke: 2px var(--coral);
+  color: transparent !important;
+  display: inline;
+}
+
+/* ===========================
+   SCROLLED NAV — use navy instead of cream
+   =========================== */
+
+.nav.scrolled {
+  background: rgba(38, 71, 108, 0.94) !important;
+  box-shadow: 0 4px 24px rgba(38,71,108,0.18) !important;
+}
+.nav.scrolled .nav__logo-text { color: var(--white) !important; }
+.nav.scrolled .nav__link { color: rgba(255,255,255,0.88) !important; }
+.nav.scrolled .nav__burger span { background: var(--white) !important; }
+
+/* ===========================
+   VALUE CARDS — bigger icon, featured number treatment
+   =========================== */
+
+.value__icon {
+  width: 56px !important;
+  height: 56px !important;
+  border-radius: 16px !important;
+  font-size: 1.5rem !important;
+}
+
+/* ===========================
+   STATS — make item borders disappear (cleaner)
+   =========================== */
+
+.stats-bar__item { border-right: none !important; }
+.stats-bar__grid { gap: 0; }
+
 </style>
 </head>
 <body>
@@ -2338,16 +2472,18 @@ section { padding: 116px 0; }
       </p>
 
       <div class="cards">
-        <article class="card reveal" id="school-transport">
-          <div class="card__img"><img src="https://images.pexels.com/photos/37098586/pexels-photo-37098586.jpeg?auto=compress&cs=tinysrgb&w=400&h=200&fit=crop" alt="Children crossing street with backpacks" loading="lazy" width="400" height="200"></div>
-          <div class="card__icon card__icon--coral"><svg class="icon"><use href="#icon-van"/></svg></div>
-          <h3>School Transport</h3>
-          <p>Your child's safety is our priority. With experienced drivers and well-maintained vehicles, we provide a dependable school transport service you can trust.</p>
-          <ul class="card__list">
-            <li>Experienced, careful drivers</li>
-            <li>Well-maintained vehicles</li>
-            <li>Dependable, every day</li>
-          </ul>
+        <article class="card card--featured reveal" id="school-transport">
+          <div class="card__img"><img src="https://images.pexels.com/photos/37098586/pexels-photo-37098586.jpeg?auto=compress&cs=tinysrgb&w=800&h=480&fit=crop" alt="Children crossing street with backpacks" loading="lazy" width="800" height="480"></div>
+          <div class="card__body">
+            <div class="card__icon card__icon--coral"><svg class="icon"><use href="#icon-van"/></svg></div>
+            <h3>School Transport</h3>
+            <p>Your child's safety is our priority. With experienced drivers and well-maintained vehicles, we provide a dependable school transport service you can trust.</p>
+            <ul class="card__list">
+              <li>Experienced, careful drivers</li>
+              <li>Well-maintained vehicles</li>
+              <li>Dependable, every day</li>
+            </ul>
+          </div>
         </article>
 
         <article class="card reveal" data-delay="1" id="baby-sitters">
@@ -2693,8 +2829,41 @@ document.addEventListener('DOMContentLoaded', () => {
   initTestimonials();
   initAccordion();
   initBookingModal();
+  initStatsCountUp();
   document.getElementById('year').textContent = new Date().getFullYear();
 });
+
+/* ---------- Stats count-up ---------- */
+function initStatsCountUp() {
+  const items = document.querySelectorAll('.stats-bar__num');
+  if (!items.length) return;
+  const parse = (el) => {
+    const t = el.textContent.trim();
+    return { raw: t, num: parseFloat(t.replace(/[^0-9.]/g, '')), suffix: t.replace(/[0-9.]/g, '') };
+  };
+  const easeOut = (t) => 1 - Math.pow(1 - t, 3);
+  const animate = (el, from, to, suffix, dec, dur) => {
+    const start = performance.now();
+    const step = (now) => {
+      const p = Math.min((now - start) / dur, 1);
+      const v = from + (to - from) * easeOut(p);
+      el.textContent = (dec ? v.toFixed(1) : Math.round(v)) + suffix;
+      if (p < 1) requestAnimationFrame(step);
+    };
+    requestAnimationFrame(step);
+  };
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      const el = entry.target;
+      const { num, suffix, raw } = parse(el);
+      const dec = raw.includes('.');
+      animate(el, 0, num, suffix, dec, 1400);
+      io.unobserve(el);
+    });
+  }, { threshold: 0.5 });
+  items.forEach(el => io.observe(el));
+}
 
 /* ---------- Booking modal ---------- */
 function initBookingModal() {
