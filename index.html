@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>CliPie Power Drives — School Transport, Pet &amp; House Sitting</title>
   <meta name="description" content="Safe school transport, loving pet sitting, and trusted house sitting — CliPie Power Drives looks after the people, pets, and places you care about most." />
+  <link rel="icon" href="assets/logo-original.png" type="image/png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -36,6 +37,162 @@
   --container: 1180px;
   --transition: 0.3s cubic-bezier(.25,.8,.25,1);
 }
+
+/* ===========================
+   Hero photo stack
+   =========================== */
+
+.hero__photo-stack {
+  border-radius: var(--radius);
+  overflow: hidden;
+  height: 220px;
+  margin-bottom: 20px;
+  box-shadow: var(--shadow-lg);
+  position: relative;
+}
+.hero__photo-stack img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  animation: kenBurns 20s ease-in-out infinite alternate;
+}
+.hero__photo-stack::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, transparent 40%, rgba(27,42,74,0.18));
+  pointer-events: none;
+}
+
+@keyframes kenBurns {
+  from { transform: scale(1); }
+  to { transform: scale(1.08) translate(-2%, 1%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero__photo-stack img { animation: none; }
+}
+
+/* ===========================
+   Service card images
+   =========================== */
+
+.card__img {
+  margin: -32px -28px 24px;
+  height: 170px;
+  border-radius: var(--radius) var(--radius) 0 0;
+  overflow: hidden;
+}
+.card__img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+.card:hover .card__img img {
+  transform: scale(1.06);
+}
+
+/* ===========================
+   Photo strip
+   =========================== */
+
+.photo-strip {
+  overflow: hidden;
+  background: var(--navy);
+  line-height: 0;
+}
+.photo-strip__track {
+  display: flex;
+  gap: 4px;
+}
+.photo-strip__item {
+  flex: 1;
+  height: 240px;
+  overflow: hidden;
+  position: relative;
+}
+.photo-strip__item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.7s ease, filter 0.5s ease;
+  filter: brightness(0.82) saturate(0.85);
+}
+.photo-strip__item:hover img {
+  transform: scale(1.08);
+  filter: brightness(1) saturate(1.1);
+}
+.photo-strip__item::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(27,42,74,0.5) 0%, transparent 55%);
+  pointer-events: none;
+}
+
+@media (max-width: 640px) {
+  .photo-strip__track {
+    overflow-x: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  .photo-strip__track::-webkit-scrollbar { display: none; }
+  .photo-strip__item {
+    flex: 0 0 220px;
+    height: 180px;
+  }
+}
+
+/* ===========================
+   Stats bar
+   =========================== */
+
+.stats-bar {
+  background: var(--white);
+  border-bottom: 1px solid rgba(27,42,74,0.07);
+}
+.stats-bar__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+.stats-bar__item {
+  padding: 40px 24px;
+  text-align: center;
+  border-right: 1px solid rgba(27,42,74,0.08);
+}
+.stats-bar__item:last-child { border-right: none; }
+.stats-bar__num {
+  display: block;
+  font-family: var(--font-head);
+  font-weight: 800;
+  font-size: clamp(2rem, 3.5vw, 2.8rem);
+  color: var(--coral);
+  line-height: 1;
+}
+.stats-bar__label {
+  display: block;
+  margin-top: 8px;
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+  font-weight: 500;
+}
+
+@media (max-width: 640px) {
+  .stats-bar__grid { grid-template-columns: repeat(2, 1fr); }
+  .stats-bar__item:nth-child(even) { border-right: none; }
+  .stats-bar__item { border-bottom: 1px solid rgba(27,42,74,0.08); padding: 28px 16px; }
+  .stats-bar__item:nth-child(3),
+  .stats-bar__item:nth-child(4) { border-bottom: none; }
+}
+
+/* ===========================
+   Testimonial avatar variants
+   =========================== */
+
+.testimonial__avatar--coral { background: var(--coral-dark); }
+.testimonial__avatar--mint { background: #1D9E93; }
+.testimonial__avatar--amber { background: #9A7800; }
 
 * { box-sizing: border-box; }
 
@@ -1650,6 +1807,9 @@ section { padding: 100px 0; }
       </div>
 
       <div class="hero__visual reveal" data-delay="2">
+        <div class="hero__photo-stack">
+          <img src="https://picsum.photos/seed/family-children-happy-outdoors/520/280" alt="Happy family cared for by CliPie Power Drives" loading="eager" width="520" height="280">
+        </div>
         <div class="hero__card">
           <div class="hero__card-head">
             <span class="hero__card-dot"></span>
@@ -1738,6 +1898,7 @@ section { padding: 100px 0; }
 
       <div class="cards">
         <article class="card reveal" id="school-transport">
+          <div class="card__img"><img src="https://picsum.photos/seed/school-transport-safe-children/400/200" alt="School transport service" loading="lazy" width="400" height="200"></div>
           <div class="card__icon card__icon--coral"><svg class="icon"><use href="#icon-van"/></svg></div>
           <h3>School Transport</h3>
           <p>Your child's safety is our priority. With experienced drivers and well-maintained vehicles, we provide a dependable school transport service you can trust.</p>
@@ -1749,6 +1910,7 @@ section { padding: 100px 0; }
         </article>
 
         <article class="card reveal" data-delay="1" id="baby-sitters">
+          <div class="card__img"><img src="https://picsum.photos/seed/babysitter-child-nurture/400/200" alt="Babysitting service" loading="lazy" width="400" height="200"></div>
           <div class="card__icon card__icon--mint"><svg class="icon"><use href="#icon-baby"/></svg></div>
           <h3>Baby Sitters</h3>
           <p>Experienced sitters provide nurturing care, ensuring your children are safe, happy, and engaged — whenever you need a helping hand.</p>
@@ -1760,6 +1922,7 @@ section { padding: 100px 0; }
         </article>
 
         <article class="card reveal" data-delay="2" id="house-sitters">
+          <div class="card__img"><img src="https://picsum.photos/seed/house-home-secure-property/400/200" alt="House sitting service" loading="lazy" width="400" height="200"></div>
           <div class="card__icon card__icon--amber"><svg class="icon"><use href="#icon-home"/></svg></div>
           <h3>House Sitters</h3>
           <p>Reliable house sitters keep your property secure and well-maintained, offering total peace of mind whenever you're away.</p>
@@ -1771,6 +1934,7 @@ section { padding: 100px 0; }
         </article>
 
         <article class="card reveal" data-delay="3" id="pet-sitters">
+          <div class="card__img"><img src="https://picsum.photos/seed/dog-pet-walk-happy/400/200" alt="Pet sitting service" loading="lazy" width="400" height="200"></div>
           <div class="card__icon card__icon--coral"><svg class="icon"><use href="#icon-paw"/></svg></div>
           <h3>Pet Sitters</h3>
           <p>From daily walks to tailored routines, we make sure your pet stays happy, healthy, and loved while you're away.</p>
@@ -1783,6 +1947,39 @@ section { padding: 100px 0; }
       </div>
     </div>
   </section>
+
+  <!-- ============ PHOTO STRIP ============ -->
+  <div class="photo-strip" aria-label="Our services in action">
+    <div class="photo-strip__track">
+      <div class="photo-strip__item"><img src="https://picsum.photos/seed/school-run-morning/340/240" alt="School transport" loading="lazy" width="340" height="240"></div>
+      <div class="photo-strip__item"><img src="https://picsum.photos/seed/child-play-babysitter/340/240" alt="Babysitting" loading="lazy" width="340" height="240"></div>
+      <div class="photo-strip__item"><img src="https://picsum.photos/seed/home-property-exterior/340/240" alt="House sitting" loading="lazy" width="340" height="240"></div>
+      <div class="photo-strip__item"><img src="https://picsum.photos/seed/golden-retriever-walk/340/240" alt="Pet sitting" loading="lazy" width="340" height="240"></div>
+      <div class="photo-strip__item"><img src="https://picsum.photos/seed/family-outdoor-children/340/240" alt="Happy families" loading="lazy" width="340" height="240"></div>
+    </div>
+  </div>
+
+  <!-- ============ STATS BAR ============ -->
+  <div class="stats-bar">
+    <div class="container stats-bar__grid">
+      <div class="stats-bar__item reveal">
+        <span class="stats-bar__num">200+</span>
+        <span class="stats-bar__label">Families Served</span>
+      </div>
+      <div class="stats-bar__item reveal" data-delay="1">
+        <span class="stats-bar__num">5.0</span>
+        <span class="stats-bar__label">Star Rating</span>
+      </div>
+      <div class="stats-bar__item reveal" data-delay="2">
+        <span class="stats-bar__num">100%</span>
+        <span class="stats-bar__label">Vetted &amp; Insured</span>
+      </div>
+      <div class="stats-bar__item reveal" data-delay="3">
+        <span class="stats-bar__num">7</span>
+        <span class="stats-bar__label">Days a Week</span>
+      </div>
+    </div>
+  </div>
 
   <!-- ============ WHY US ============ -->
   <section class="values">
@@ -1849,7 +2046,6 @@ section { padding: 100px 0; }
   <!-- ============ TESTIMONIALS ============ -->
   <section class="testimonials" id="testimonials">
     <div class="container">
-      <p class="eyebrow center reveal">Kind words</p>
       <h2 class="section-title center reveal">Loved by families &amp; their pets</h2>
 
       <div class="testimonial-slider reveal" data-delay="1">
@@ -1860,7 +2056,7 @@ section { padding: 100px 0; }
             <p>"CliPie Power Drives has been an absolute lifesaver for our family! The school transport is always on time and our kids feel safe and looked after. Highly recommended!"</p>
             <div class="testimonial__person">
               <div class="testimonial__avatar">LC</div>
-              <div class="testimonial__author">Leon Coetzee</div>
+              <div class="testimonial__author">Leon Coetzee, Cape Town</div>
             </div>
           </div>
           <div class="testimonial">
@@ -1868,8 +2064,8 @@ section { padding: 100px 0; }
             <div class="stars">★★★★★</div>
             <p>"I booked a pet sitter through CliPie Power Drives for my Labrador, Bella. While I was away they sent daily photo updates and Bella was happy and well looked after the whole time."</p>
             <div class="testimonial__person">
-              <div class="testimonial__avatar">AD</div>
-              <div class="testimonial__author">Alicia Davis</div>
+              <div class="testimonial__avatar testimonial__avatar--coral">AD</div>
+              <div class="testimonial__author">Alicia Davis, Bellville</div>
             </div>
           </div>
           <div class="testimonial">
@@ -1877,8 +2073,8 @@ section { padding: 100px 0; }
             <div class="stars">★★★★★</div>
             <p>"We used CliPie Power Drives babysitting services for an evening out and we couldn't be happier with everything they have done for us. Our kids loved the sitter!"</p>
             <div class="testimonial__person">
-              <div class="testimonial__avatar">SG</div>
-              <div class="testimonial__author">Sumari Gerber</div>
+              <div class="testimonial__avatar testimonial__avatar--mint">SG</div>
+              <div class="testimonial__author">Sumari Gerber, Durbanville</div>
             </div>
           </div>
           <div class="testimonial">
@@ -1886,8 +2082,8 @@ section { padding: 100px 0; }
             <div class="stars">★★★★★</div>
             <p>"They watered my plants and even ensured my home looked lived-in while I was away — came back to a spotless house. Such peace of mind!"</p>
             <div class="testimonial__person">
-              <div class="testimonial__avatar">KK</div>
-              <div class="testimonial__author">Kiara Kemp</div>
+              <div class="testimonial__avatar testimonial__avatar--amber">KK</div>
+              <div class="testimonial__author">Kiara Kemp, Paarl</div>
             </div>
           </div>
         </div>
@@ -1900,7 +2096,6 @@ section { padding: 100px 0; }
   <!-- ============ FAQ ============ -->
   <section class="faq" id="faq">
     <div class="container">
-      <p class="eyebrow center reveal">Questions &amp; answers</p>
       <h2 class="section-title center reveal">Frequently asked questions</h2>
 
       <div class="accordion reveal" data-delay="1">
