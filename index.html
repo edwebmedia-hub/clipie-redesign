@@ -1951,6 +1951,150 @@ section { padding: 116px 0; }
 /* Push h3 down to clear the floating badge */
 .card:has(.card__img) h3 { margin-top: 30px; }
 
+/* ===========================
+   DESIGN ELEVATION PASS
+   =========================== */
+
+/* Hero — rich gradient, not flat navy */
+.hero {
+  background: linear-gradient(145deg, #101D35 0%, #1B2A4A 45%, #243566 100%) !important;
+}
+
+/* Subtle warm glow behind hero card — depth effect */
+.hero__visual::before {
+  content: '';
+  position: absolute;
+  right: -40px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 320px;
+  height: 320px;
+  background: radial-gradient(circle, rgba(255,107,74,0.18) 0%, transparent 68%);
+  pointer-events: none;
+  z-index: 0;
+}
+.hero__card { position: relative; z-index: 1; }
+.hero__floatcard { z-index: 2; }
+
+/* Dot-grid texture on cream sections — very subtle depth */
+.services, .steps, .faq {
+  background-image: radial-gradient(rgba(27,42,74,0.055) 1px, transparent 1px);
+  background-size: 26px 26px;
+}
+
+/* Section titles — tighter tracking, more authority */
+.section-title {
+  letter-spacing: -0.028em !important;
+  font-weight: 800 !important;
+}
+
+/* Services section heading — italic accent word */
+.services .section-title em {
+  font-style: italic;
+  color: var(--coral);
+}
+
+/* Value cards — coral top accent line */
+.value {
+  position: relative;
+  overflow: hidden;
+}
+.value::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 28px;
+  right: 28px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--coral), transparent);
+  border-radius: 0 0 2px 2px;
+  opacity: 0.65;
+  transition: opacity 0.4s ease, left 0.4s ease;
+}
+.value:hover::before {
+  opacity: 1;
+  left: 0;
+  right: 0;
+}
+
+/* Steps — navy background for rhythm variety */
+.steps { background: var(--navy) !important; background-image: none !important; }
+.steps .section-title { color: var(--white) !important; }
+.steps .section-subtitle { color: rgba(255,255,255,0.58) !important; }
+.step h3 { color: var(--white) !important; }
+.step p { color: rgba(255,255,255,0.55) !important; }
+.step__circle {
+  background: var(--coral) !important;
+  color: var(--white) !important;
+  border-color: var(--coral) !important;
+  box-shadow: 0 8px 24px rgba(255,107,74,0.35) !important;
+}
+
+/* Testimonials — kill slider, show 2x2 grid on desktop */
+.testimonial-track {
+  display: grid !important;
+  grid-template-columns: repeat(2, 1fr) !important;
+  gap: 24px !important;
+  min-height: unset !important;
+  position: static !important;
+}
+.testimonial {
+  position: static !important;
+  opacity: 1 !important;
+  transform: none !important;
+  pointer-events: auto !important;
+  border-radius: var(--radius) !important;
+  background: var(--cream) !important;
+  border: 1px solid rgba(27,42,74,0.07) !important;
+  transition: transform 0.35s cubic-bezier(0.16,1,0.3,1), box-shadow 0.35s cubic-bezier(0.16,1,0.3,1) !important;
+}
+.testimonial:hover {
+  transform: translateY(-6px) !important;
+  box-shadow: 0 24px 48px rgba(27,42,74,0.11) !important;
+}
+.testimonial-dots,
+.testimonial-prev,
+.testimonial-next { display: none !important; }
+
+@media (max-width: 720px) {
+  .testimonial-track { grid-template-columns: 1fr !important; }
+}
+
+/* Testimonials section — white background for contrast against cream services */
+.testimonials { background: var(--white) !important; }
+
+/* CTA banner — bolder heading */
+.cta__inner h2 {
+  font-size: clamp(2rem, 5vw, 3.2rem) !important;
+  letter-spacing: -0.035em !important;
+  line-height: 1.1 !important;
+}
+
+/* Stats bar — slightly bigger numbers, label uppercase */
+.stats-bar__num { font-size: clamp(2.4rem, 4.5vw, 3.4rem) !important; }
+.stats-bar__label {
+  font-size: 0.72rem !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.1em !important;
+  font-weight: 600 !important;
+}
+
+/* FAQ — slight tightening */
+.faq { background: var(--cream) !important; }
+
+/* Footer — slightly deeper navy */
+.footer { background: #0E1927 !important; }
+
+/* Card hover — spring-feel, no linearY */
+.card:hover { transform: translateY(-12px) scale(1.008) !important; }
+
+/* Reduce motion overrides */
+@media (prefers-reduced-motion: reduce) {
+  .hero__visual::before { display: none; }
+  .testimonial:hover { transform: none !important; }
+  .card:hover { transform: none !important; }
+}
+
 </style>
 </head>
 <body>
@@ -2173,7 +2317,7 @@ section { padding: 116px 0; }
   <section class="services" id="services">
     <div class="container">
       <p class="eyebrow center reveal">What we do</p>
-      <h2 class="section-title center reveal">One trusted team for everything that matters</h2>
+      <h2 class="section-title center reveal">One trusted team for <em>everything</em> that matters</h2>
       <p class="section-subtitle center reveal" data-delay="1">
         From the school run to looking after your home and pets while you're away,
         we treat every family, pet, and home like our own.
