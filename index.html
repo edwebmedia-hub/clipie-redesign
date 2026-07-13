@@ -2017,24 +2017,28 @@ section { padding: 116px 0; }
   right: 0;
 }
 
-/* Steps — navy background for rhythm variety */
-.steps { background: var(--navy) !important; background-image: none !important; }
-.steps .section-title { color: var(--white) !important; }
-.steps .section-subtitle { color: rgba(255,255,255,0.58) !important; }
-.step h3 { color: var(--white) !important; }
-.step p { color: rgba(255,255,255,0.55) !important; }
+/* Steps — cream (distinct from navy Values above it) */
+.steps { background: var(--cream) !important; }
+.steps .section-title { color: var(--navy) !important; }
+.steps .section-subtitle { color: var(--ink-soft) !important; }
+.step h3 { color: var(--navy) !important; }
+.step p { color: var(--ink-soft) !important; }
 .step__circle {
   background: var(--coral) !important;
   color: var(--white) !important;
   border-color: var(--coral) !important;
-  box-shadow: 0 8px 24px rgba(255,107,74,0.35) !important;
+  box-shadow: 0 8px 24px rgba(255,107,74,0.28) !important;
 }
 
 /* Testimonials — kill slider, show 2x2 grid on desktop */
+.testimonial-slider {
+  max-width: none !important;
+  margin-top: 48px !important;
+}
 .testimonial-track {
   display: grid !important;
   grid-template-columns: repeat(2, 1fr) !important;
-  gap: 24px !important;
+  gap: 28px !important;
   min-height: unset !important;
   position: static !important;
 }
@@ -2043,15 +2047,17 @@ section { padding: 116px 0; }
   opacity: 1 !important;
   transform: none !important;
   pointer-events: auto !important;
+  padding: 36px 36px 32px !important;
   border-radius: var(--radius) !important;
   background: var(--cream) !important;
   border: 1px solid rgba(27,42,74,0.07) !important;
   transition: transform 0.35s cubic-bezier(0.16,1,0.3,1), box-shadow 0.35s cubic-bezier(0.16,1,0.3,1) !important;
 }
 .testimonial:hover {
-  transform: translateY(-6px) !important;
-  box-shadow: 0 24px 48px rgba(27,42,74,0.11) !important;
+  transform: translateY(-5px) !important;
+  box-shadow: 0 20px 44px rgba(27,42,74,0.1) !important;
 }
+.testimonial p { font-size: 1rem !important; line-height: 1.72 !important; }
 .testimonial-dots,
 .testimonial-prev,
 .testimonial-next { display: none !important; }
@@ -2060,8 +2066,16 @@ section { padding: 116px 0; }
   .testimonial-track { grid-template-columns: 1fr !important; }
 }
 
-/* Testimonials section — white background for contrast against cream services */
-.testimonials { background: var(--white) !important; }
+/* Testimonials section — navy for drama after cream steps */
+.testimonials {
+  background: var(--navy) !important;
+}
+.testimonials .section-title { color: var(--white) !important; }
+.testimonial { background: rgba(255,255,255,0.07) !important; border-color: rgba(255,255,255,0.1) !important; }
+.testimonial p { color: rgba(255,255,255,0.82) !important; }
+.testimonial__author { color: rgba(255,255,255,0.55) !important; }
+.stars { color: var(--amber) !important; }
+.testimonial__quote use { color: rgba(255,107,74,0.35) !important; }
 
 /* CTA banner — bolder heading */
 .cta__inner h2 {
