@@ -8,7 +8,7 @@
   <link rel="icon" href="assets/logo-original.png" type="image/png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
 /* ===========================
    CliPie Power Drives — styles
@@ -26,7 +26,7 @@
   --ink: #1F2937;
   --ink-soft: #5B6472;
 
-  --font-head: 'Poppins', sans-serif;
+  --font-head: 'Plus Jakarta Sans', sans-serif;
   --font-body: 'Inter', sans-serif;
 
   --radius: 20px;
@@ -1664,6 +1664,193 @@ section { padding: 100px 0; }
   .modal__dialog { padding: 28px 22px; }
 }
 
+/* ===========================
+   PREMIUM OVERHAUL
+   =========================== */
+
+/* Kill blobs + scroll cue — clean background */
+.blob { display: none; }
+.scroll-cue { display: none; }
+
+/* Hero — warmer bg, much stronger typography */
+.hero {
+  background: #FFF8F5;
+  padding: 148px 0 128px;
+}
+
+.hero__title {
+  font-size: clamp(3rem, 5.6vw, 5.2rem);
+  letter-spacing: -0.035em;
+  line-height: 1.04;
+}
+
+/* Hero visual — tighter float badge positioning since photo is gone */
+.hero__floatcard--rating {
+  top: -20px;
+  right: -20px;
+}
+.hero__floatcard--safe {
+  bottom: -18px;
+  left: -20px;
+}
+
+/* Section subtitle — more readable */
+.section-subtitle {
+  font-size: 1.08rem;
+  line-height: 1.8;
+}
+
+/* More breathing room across all sections */
+section { padding: 116px 0; }
+@media (max-width: 640px) { section { padding: 72px 0; } }
+
+/* ===========================
+   Services cards — taller photo, hover overlay
+   =========================== */
+
+.card__img {
+  height: 200px;
+  position: relative;
+}
+.card__img::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 107, 74, 0);
+  transition: background 0.45s ease;
+  pointer-events: none;
+}
+.card:hover .card__img::after {
+  background: rgba(255, 107, 74, 0.1);
+}
+.card {
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 32px 64px rgba(27, 42, 74, 0.16);
+}
+
+/* ===========================
+   Values — dark navy section (biggest visual shift)
+   =========================== */
+
+.values { background: var(--navy); }
+
+.values .section-title { color: var(--white); }
+.values .section-subtitle { color: rgba(255, 255, 255, 0.62); }
+
+.value {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+}
+.value:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 107, 74, 0.35);
+  transform: translateY(-8px);
+}
+.value h3 { color: var(--white); }
+.value p { color: rgba(255, 255, 255, 0.58); }
+.value__num { color: var(--coral); opacity: 0.18; }
+.value__icon {
+  background: rgba(255, 107, 74, 0.15);
+  color: var(--coral);
+}
+
+/* ===========================
+   Steps — vertical timeline on desktop
+   =========================== */
+
+@media (min-width: 861px) {
+  .steps__track {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    max-width: 680px;
+    margin: 64px auto 0;
+  }
+  .steps__line { display: none; }
+  .step {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    align-items: start;
+    gap: 36px;
+    text-align: left;
+    padding: 42px 0;
+    border-bottom: 1px solid rgba(27, 42, 74, 0.09);
+  }
+  .step:last-child { border-bottom: none; }
+  .step__circle {
+    width: 72px;
+    height: 72px;
+    font-size: 1.45rem;
+    margin: 0;
+    flex-shrink: 0;
+  }
+  .step h3 {
+    font-size: 1.18rem;
+    margin-bottom: 8px;
+    padding-top: 16px;
+  }
+  .step p { font-size: 0.95rem; }
+}
+
+/* ===========================
+   Testimonials — richer card
+   =========================== */
+
+.testimonial { padding: 52px 44px 44px; }
+.testimonial p {
+  font-size: 1.08rem;
+  line-height: 1.82;
+}
+.stars { font-size: 1.1rem; letter-spacing: 2px; }
+.testimonial__avatar {
+  width: 44px;
+  height: 44px;
+  font-size: 0.9rem;
+}
+
+/* ===========================
+   Accordion — more elegant
+   =========================== */
+
+.accordion__trigger { font-size: 1.02rem; padding: 24px 28px; }
+
+/* ===========================
+   Stats bar — more impactful numbers
+   =========================== */
+
+.stats-bar { background: var(--cream); border-top: 1px solid rgba(27,42,74,0.07); }
+.stats-bar__num {
+  font-size: clamp(2.2rem, 4vw, 3rem);
+  background: linear-gradient(135deg, var(--coral), var(--coral-dark));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ===========================
+   Nav logo text — tighter weight
+   =========================== */
+
+.nav__logo-text { font-weight: 800; letter-spacing: -0.01em; }
+
+/* ===========================
+   CTA banner — stronger
+   =========================== */
+
+.cta__inner h2 { letter-spacing: -0.025em; }
+
+/* ===========================
+   Photo strip — slightly taller on desktop
+   =========================== */
+
+@media (min-width: 768px) {
+  .photo-strip__item { height: 260px; }
+}
+
 </style>
 </head>
 <body>
@@ -1782,7 +1969,6 @@ section { padding: 100px 0; }
 
     <div class="container hero__grid">
       <div class="hero__content">
-        <p class="eyebrow reveal">Your Family's Reliable Partner</p>
         <h1 class="hero__title reveal">
           Safe rides,<br>
           <span class="hero__title-accent">trusted care</span>,<br>
@@ -1981,7 +2167,6 @@ section { padding: 100px 0; }
   <!-- ============ WHY US ============ -->
   <section class="values">
     <div class="container">
-      <p class="eyebrow center reveal">Why families choose CliPie</p>
       <h2 class="section-title center reveal">Reliability you can set your watch to</h2>
 
       <div class="values__grid">
@@ -2010,7 +2195,6 @@ section { padding: 100px 0; }
   <!-- ============ HOW IT WORKS ============ -->
   <section class="steps" id="how-it-works">
     <div class="container">
-      <p class="eyebrow center reveal">Getting started is easy</p>
       <h2 class="section-title center reveal">How it works</h2>
 
       <div class="steps__track">
