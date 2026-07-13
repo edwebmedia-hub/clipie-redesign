@@ -1847,9 +1847,75 @@ section { padding: 116px 0; }
    Photo strip — slightly taller on desktop
    =========================== */
 
-@media (min-width: 768px) {
-  .photo-strip__item { height: 260px; }
+/* ===========================
+   DARK HERO + CORAL TRUST + FIXED STEPS
+   =========================== */
+
+/* Hero — full dark navy */
+.hero { background: var(--navy) !important; }
+.hero__title { color: var(--white) !important; }
+.hero__title-accent { color: var(--coral) !important; }
+.hero__subtitle { color: rgba(255,255,255,0.68) !important; }
+.hero__trust-row span { color: rgba(255,255,255,0.82) !important; }
+.hero__trust-row .icon { color: var(--coral) !important; }
+.hero__card { box-shadow: 0 28px 64px rgba(0,0,0,0.32); }
+.hero__floatcard { background: rgba(255,255,255,0.97); }
+
+/* Nav on dark hero — ensure readable */
+.nav:not(.scrolled) .nav__logo-text { color: var(--white); }
+.nav:not(.scrolled) .nav__logo-text span { color: var(--coral); }
+.nav:not(.scrolled) .nav__link { color: rgba(255,255,255,0.88); }
+.nav:not(.scrolled) .nav__link::after { background: var(--coral); }
+.nav:not(.scrolled) .nav__burger span { background: var(--white); }
+
+/* Trust strip — coral band (breaks up navy-to-navy) */
+.trust {
+  background: linear-gradient(110deg, var(--coral-dark), var(--coral) 55%, #FF8C5A) !important;
 }
+.trust__item .icon { color: var(--white) !important; opacity: 0.9; }
+.trust__item + .trust__item::before { background: rgba(255,255,255,0.28) !important; }
+
+/* Steps — kill broken vertical, restore horizontal with filled circles */
+@media (min-width: 861px) {
+  .steps__track {
+    display: grid !important;
+    grid-template-columns: repeat(4, 1fr) !important;
+    flex-direction: unset !important;
+    max-width: none !important;
+    margin-top: 70px !important;
+    gap: 32px !important;
+  }
+  .step {
+    display: block !important;
+    text-align: center !important;
+    padding: 0 !important;
+    border-bottom: none !important;
+    grid-template-columns: unset !important;
+  }
+  .step__circle {
+    width: 72px !important;
+    height: 72px !important;
+    font-size: 1.4rem !important;
+    margin: 0 auto 22px !important;
+    background: var(--coral) !important;
+    color: var(--white) !important;
+    border-color: var(--coral) !important;
+  }
+  .step:hover .step__circle {
+    background: var(--coral-dark) !important;
+    border-color: var(--coral-dark) !important;
+    color: var(--white) !important;
+    transform: scale(1.1) !important;
+  }
+  .step h3 {
+    font-size: 1.05rem !important;
+    padding-top: 0 !important;
+    margin-bottom: 8px !important;
+  }
+}
+
+/* Stats bar — sits on cream, strong numbers */
+.stats-bar { background: var(--cream) !important; border-top: none !important; border-bottom: 1px solid rgba(27,42,74,0.07) !important; }
 
 </style>
 </head>
@@ -2130,17 +2196,6 @@ section { padding: 116px 0; }
       </div>
     </div>
   </section>
-
-  <!-- ============ PHOTO STRIP ============ -->
-  <div class="photo-strip" aria-label="Our services in action">
-    <div class="photo-strip__track">
-      <div class="photo-strip__item"><img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?w=340&h=240&fit=crop&auto=format" alt="School transport" loading="lazy" width="340" height="240"></div>
-      <div class="photo-strip__item"><img src="https://images.unsplash.com/photo-1555252333-9f8e92e65df9?w=340&h=240&fit=crop&auto=format" alt="Babysitting" loading="lazy" width="340" height="240"></div>
-      <div class="photo-strip__item"><img src="https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=340&h=240&fit=crop&auto=format" alt="House sitting" loading="lazy" width="340" height="240"></div>
-      <div class="photo-strip__item"><img src="https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=340&h=240&fit=crop&auto=format" alt="Pet sitting" loading="lazy" width="340" height="240"></div>
-      <div class="photo-strip__item"><img src="https://images.unsplash.com/photo-1476703993599-0035a21b17a9?w=340&h=240&fit=crop&auto=format" alt="Family care" loading="lazy" width="340" height="240"></div>
-    </div>
-  </div>
 
   <!-- ============ STATS BAR ============ -->
   <div class="stats-bar">
